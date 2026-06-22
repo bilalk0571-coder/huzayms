@@ -70,12 +70,14 @@ export default function Home() {
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 text-center bg-gradient-to-b from-[#0A192F] via-[#112240] to-white text-white">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           
-          {/* Replaced 'Luxury Fragrances' text box with the new White PNG logo component */}
-          <img 
-            src="/images/logo-white.png" 
-            alt="Huzaym's Elixirs Crest" 
-            className="w-14 h-14 md:w-16 md:h-16 object-contain mb-4 filter drop-shadow-sm"
-          />
+          {/* Enhanced, highly-visible white emblem wrapper */}
+          <div className="mb-4 flex items-center justify-center">
+            <img 
+              src="/images/logo-white.png" 
+              alt="Huzaym's Elixirs Crest" 
+              className="h-16 w-auto md:h-24 object-contain filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
+            />
+          </div>
 
           <h1 className="text-4xl md:text-6xl font-black tracking-tight uppercase text-white leading-tight">
             HUZAYM'S ELIXIRS
