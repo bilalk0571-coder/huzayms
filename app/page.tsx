@@ -52,7 +52,7 @@ export default function Home() {
               </p>
 
               <a
-                href="https://wa.me/+91 96999 50551?text=Hi%20I%20want%20to%20order%20Mariana%20Trench"
+                href="https://wa.me/+91 8928042335?text=Hi%20I%20want%20to%20order%20Mariana%20Trench"
                 target="_blank"
               >
                 <button className="mt-6 w-full bg-yellow-500 text-black py-3 rounded-lg font-semibold">
@@ -88,7 +88,7 @@ export default function Home() {
               </p>
 
               <a
-                href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20order%20Cinnabon"
+                href="https://wa.me/8928042335?text=Hi%20I%20want%20to%20order%20Cinnabon"
                 target="_blank"
               >
                 <button className="mt-6 w-full bg-yellow-500 text-black py-3 rounded-lg font-semibold">
@@ -124,7 +124,7 @@ export default function Home() {
               </p>
 
               <a
-                href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20order%20Crimson%20Leather"
+                href="https://wa.me/8928042335?text=Hi%20I%20want%20to%20order%20Crimson%20Leather"
                 target="_blank"
               >
                 <button className="mt-6 w-full bg-yellow-500 text-black py-3 rounded-lg font-semibold">
