@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+// 1. Defining a clean structure so the editor stops throwing red lines
 const PERFUMES = [
   {
     id: "mariana",
@@ -42,7 +43,7 @@ const PERFUMES = [
 ];
 
 export default function Home() {
-  const [activeProduct, setActiveProduct] = useState(null);
+  const [activeProduct, setActiveProduct] = useState<(typeof PERFUMES)[number] | null>(null);
 
   return (
     <main className="bg-white text-slate-900 min-h-screen font-sans antialiased selection:bg-slate-900 selection:text-white">
@@ -171,8 +172,8 @@ export default function Home() {
             
             <div className="flex justify-between items-center p-5 border-b border-slate-100">
               <div>
-                <h4 className="text-xl font-bold text-slate-900">{activeProduct.name}</h4>
-                <p className="text-xs text-slate-400">{activeProduct.type}</p>
+                <h4 className="text-xl font-bold text-slate-900">{(activeProduct as any).name}</h4>
+                <p className="text-xs text-slate-400">{(activeProduct as any).type}</p>
               </div>
               <button 
                 onClick={() => setActiveProduct(null)}
@@ -185,11 +186,11 @@ export default function Home() {
             <div className="p-6">
               {/* Horizontal Slider */}
               <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none">
-                {activeProduct.images.map((imgUrl, idx) => (
+                {(activeProduct as any).images.map((imgUrl: string, idx: number) => (
                   <div key={idx} className="min-w-[85%] sm:min-w-[60%] h-72 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden snap-center flex-shrink-0 flex items-center justify-center">
                     <img 
                       src={imgUrl} 
-                      alt={`${activeProduct.name} View ${idx + 1}`} 
+                      alt={`${(activeProduct as any).name} View ${idx + 1}`} 
                       className="h-full w-full object-contain p-4"
                     />
                   </div>
@@ -200,30 +201,30 @@ export default function Home() {
               <div className="space-y-4">
                 <div>
                   <span className="text-xs font-semibold text-[#0A192F] uppercase tracking-wide bg-slate-100 px-2.5 py-1 rounded">
-                    {activeProduct.tagline}
+                    {(activeProduct as any).tagline}
                   </span>
                 </div>
                 
                 <div>
                   <h5 className="text-sm font-semibold text-slate-900 mb-1">Description</h5>
                   <p className="text-slate-500 text-sm font-light leading-relaxed">
-                    {activeProduct.description}
+                    {(activeProduct as any).description}
                   </p>
                 </div>
 
                 <div className="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-100 mt-6">
                   <div>
                     <span className="text-xs text-slate-400 block">Bottle Size</span>
-                    <span className="text-sm font-medium text-slate-800">{activeProduct.size}</span>
+                    <span className="text-sm font-medium text-slate-800">{(activeProduct as any).size}</span>
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-slate-400 block">Pricing</span>
-                    <span className="text-2xl font-black text-[#0A192F]">{activeProduct.price}</span>
+                    <span className="text-2xl font-black text-[#0A192F]">{(activeProduct as any).price}</span>
                   </div>
                 </div>
 
                 <a 
-                  href={activeProduct.waLink}
+                  href={(activeProduct as any).waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block mt-6"
