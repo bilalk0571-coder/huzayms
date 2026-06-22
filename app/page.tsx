@@ -11,8 +11,8 @@ const PERFUMES = [
     size: "30ml / 1.0 fl.oz",
     tagline: "Aquatic • Fresh • Mysterious",
     description: "Dive into the depths of pure luxury. Mariana Trench opens with a crushing wave of marine freshness, deep sea salt, and mineral ambergris. It is designed for the modern trailblazer who commands presence. Perfect for daily wear and warm evenings.",
-    mainImage: "/images/mariana-new.jpeg", // The new image on display
-    images: ["/images/mariana-new.jpeg", "/images/mariana-trench.jpeg"], // New one first, previous one second
+    mainImage: "/images/mariana-new.jpeg", 
+    images: ["/images/mariana-new.jpeg", "/images/mariana-trench.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Mariana%20Trench%20(30ml)."
   },
   {
@@ -23,8 +23,8 @@ const PERFUMES = [
     size: "30ml / 1.0 fl.oz",
     tagline: "Sweet • Vanillic • Addictive",
     description: "Indulge in timeless comfort. Cinnabon delivers a rich, gourmand experience layered with warm cinnamon bark, whipped vanilla cream, and a smooth touch of toasted brown sugar. A cozy, intoxicating trail that captures pure indulgence.",
-    mainImage: "/images/cinnabon-new.jpeg", // The new image on display
-    images: ["/images/cinnabon-new.jpeg", "/images/cinnabon-leather.jpeg"], // New one first, previous one second
+    mainImage: "/images/cinnabon-new.jpeg", 
+    images: ["/images/cinnabon-new.jpeg", "/images/cinnabon.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Cinnabon%20(30ml)."
   },
   {
@@ -35,8 +35,8 @@ const PERFUMES = [
     size: "30ml / 1.0 fl.oz",
     tagline: "Rosey • Leathery • Intoxicating",
     description: "Dare to be unforgettable. Crimson Leather is a bold fusion of velvet crimson rose petals wrapped tightly in rich Tuscan leather, dark wood notes, and warm saffron. Seductive, striking, and designed for commanding attention during late nights out.",
-    mainImage: "/images/crimson-new.jpeg", // The new image on display
-    images: ["/images/crimson-new.jpeg", "/images/crimson-leather.jpeg"], // New one first, previous one second
+    mainImage: "/images/crimson-new.jpeg", 
+    images: ["/images/crimson-new.jpeg", "/images/crimson-leather.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Crimson%20Leather%20(30ml)."
   }
 ];
@@ -51,7 +51,11 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A192F]/95 backdrop-blur-md border-b border-slate-800 px-4 md:px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src="/images/logo.jpeg" alt="Logo" className="w-8 h-8 rounded-full object-cover border border-white/20" />
+            <img 
+              src="/images/logo.jpeg" 
+              alt="Logo" 
+              className="w-8 h-8 rounded-full object-cover border border-white/20" 
+            />
             <span className="text-white font-bold tracking-widest text-lg md:text-xl">HUZAYM'S</span>
           </div>
           <div className="flex gap-6 text-xs md:text-sm tracking-widest text-slate-300">
@@ -114,7 +118,7 @@ export default function Home() {
           <p className="text-[10px] text-slate-400 mt-2">Size: 3 x 30ml Bottles</p>
         </div>
 
-        {/* E-Commerce Grid Inspired verbatim by 1000219543.jpg */}
+        {/* E-Commerce Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {PERFUMES.map((perfume) => (
             <div 
@@ -179,7 +183,7 @@ export default function Home() {
             </div>
 
             <div className="p-6">
-              {/* Horizontal Slider (Shows display photo first, previous photo second) */}
+              {/* Horizontal Slider */}
               <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none">
                 {activeProduct.images.map((imgUrl, idx) => (
                   <div key={idx} className="min-w-[85%] sm:min-w-[60%] h-72 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden snap-center flex-shrink-0 flex items-center justify-center">
