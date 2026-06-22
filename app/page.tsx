@@ -42,7 +42,6 @@ const PERFUMES = [
 ];
 
 export default function Home() {
-  // Fixed the red underline by allowing this state hook to safely accept any data payload
   const [activeProduct, setActiveProduct] = useState<any>(null);
 
   return (
@@ -57,7 +56,7 @@ export default function Home() {
               alt="Logo" 
               className="w-7 h-7 md:w-8 md:h-8 rounded-full object-cover border border-white/20" 
             />
-            <span className="text-white font-black tracking-widest text-sm md:text-lg uppercase">HUZAYM'S</span>
+            <span className="text-white font-black tracking-widest text-sm md:text-lg uppercase">HUZAYM'S ELIXIRS</span>
           </div>
           <div className="flex gap-4 md:gap-6 text-[10px] md:text-xs tracking-widest font-semibold text-slate-300">
             <a href="#" className="hover:text-white transition">HOME</a>
@@ -69,12 +68,17 @@ export default function Home() {
 
       {/* Compact Gradient Hero Section */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 text-center bg-gradient-to-b from-[#0A192F] via-[#112240] to-white text-white">
-        <div className="max-w-3xl mx-auto">
-          <span className="text-[10px] md:text-xs font-bold tracking-widest text-slate-400 uppercase bg-white/5 border border-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-            Luxury Fragrances
-          </span>
-          <h1 className="text-4xl md:text-7xl font-black tracking-tight uppercase mt-4 text-white">
-            HUZAYM'S
+        <div className="max-w-3xl mx-auto flex flex-col items-center">
+          
+          {/* Replaced 'Luxury Fragrances' text box with the new White PNG logo component */}
+          <img 
+            src="/images/logo-white.png" 
+            alt="Huzaym's Elixirs Crest" 
+            className="w-14 h-14 md:w-16 md:h-16 object-contain mb-4 filter drop-shadow-sm"
+          />
+
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight uppercase text-white leading-tight">
+            HUZAYM'S ELIXIRS
           </h1>
           <p className="mt-3 text-sm md:text-lg text-slate-300 max-w-md mx-auto font-light tracking-wide leading-relaxed">
             Crafted Fragrances. Lasting Impressions.
@@ -160,7 +164,7 @@ export default function Home() {
           <span className="text-[11px] font-bold tracking-widest text-[#0A192F] uppercase">The Heritage</span>
           <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-4 md:mb-6 tracking-wide text-slate-900">Our Story</h2>
           <p className="text-slate-500 leading-relaxed font-light text-sm md:text-base">
-            At HUZAYM'S, we believe a fragrance is more than just a scent—it's a signature statement. 
+            At HUZAYM'S ELIXIRS, we believe a fragrance is more than just a scent—it's a signature statement. 
             Every bottle in our collection is crafted with meticulously sourced, high-concentration oils 
             designed to deliver extraordinary projection and depth. We blend luxury with modern edge, 
             creating unforgettable olfactory experiences that linger long after you leave the room.
@@ -245,7 +249,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-100 bg-slate-50 py-10 text-center text-[10px] text-slate-400 tracking-widest uppercase">
-        <p>&copy; {new Date().getFullYear()} HUZAYM'S. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} HUZAYM'S ELIXIRS. All rights reserved.</p>
         <p className="mt-1 text-[9px] text-slate-300 font-light">Engineered for Elegance.</p>
       </footer>
 
