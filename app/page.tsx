@@ -80,20 +80,20 @@ export default function Home() {
   return (
     <main className="bg-[#030914] text-slate-100 min-h-screen font-sans antialiased selection:bg-[#D4AF37] selection:text-black">
       
-      {/* Premium Minimal Navigation */}
+      {/* Premium Minimal Navigation — Adjusted for Mobile Layout Safety */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#030914]/80 backdrop-blur-xl border-b border-white/[0.03] px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-3">
             <img 
               src="/images/logo1.png" 
               alt="Huzaym's Elixirs Crest" 
-              className="w-7 h-auto object-contain brightness-125" 
+              className="w-6 md:w-7 h-auto object-contain brightness-125" 
             />
-            <span className="font-serif tracking-[0.3em] text-xs md:text-sm uppercase font-semibold bg-gradient-to-r from-[#C5A059] via-[#FDF6C7] to-[#B38728] bg-clip-text text-transparent">
+            <span className="font-serif tracking-[0.25em] md:tracking-[0.3em] text-[10px] md:text-sm uppercase font-semibold bg-gradient-to-r from-[#C5A059] via-[#FDF6C7] to-[#B38728] bg-clip-text text-transparent whitespace-nowrap">
               HUZAYM'S ELIXIRS
             </span>
           </div>
-          <div className="flex gap-6 text-[9px] md:text-[10px] tracking-[0.3em] font-medium text-slate-400">
+          <div className="flex gap-4 md:gap-6 text-[8px] md:text-[10px] tracking-[0.3em] font-medium text-slate-400">
             <a href="#" className="hover:text-[#D4AF37] transition-colors uppercase">HOME</a>
             <a href="#collection" className="hover:text-[#D4AF37] transition-colors uppercase">COLLECTION</a>
             <a href="#about" className="hover:text-[#D4AF37] transition-colors uppercase">STORY</a>
@@ -102,8 +102,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-36 pb-20 md:pt-48 md:pb-36 px-6 overflow-hidden bg-[#030914]">
-        {/* Ambient background blur elements matching gd.PNG style */}
+      <section className="relative pt-40 pb-20 md:pt-48 md:pb-36 px-6 overflow-hidden bg-[#030914]">
         <div className="absolute inset-0 opacity-40 pointer-events-none">
           <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[80%] rounded-full bg-gradient-to-br from-[#BF953F] via-[#2A1E08] to-transparent blur-[120px] transform -rotate-12"></div>
           <div className="absolute bottom-[-10%] right-[-5%] w-[50%] h-[70%] rounded-full bg-gradient-to-tl from-[#1E3A8A] via-[#030914] to-transparent blur-[100px]"></div>
@@ -112,7 +111,6 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
           
-          {/* Left Content Column */}
           <div className="md:col-span-6 text-center md:text-left flex flex-col items-center md:items-start space-y-6">
             <img 
               src="/images/logo1.png" 
@@ -136,7 +134,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Product Showcase Frame - Fixed image path from Capture111.PNG */}
           <div className="md:col-span-6 flex justify-center items-center px-4">
             <div className="relative max-w-md w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.8)] border border-white/[0.06] bg-[#02050c] p-1">
               <img 
@@ -150,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Collection Section - Seamless baseline setup */}
+      {/* Collection Section */}
       <section id="collection" className="py-24 md:py-32 scroll-mt-12 relative bg-[#030914]">
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#030914] to-transparent pointer-events-none z-10" />
         <div className="absolute inset-0 opacity-25 pointer-events-none">
@@ -391,7 +388,7 @@ export default function Home() {
           </div>
 
           <div className="md:col-span-12 border-t border-white/[0.03] pt-8 text-center text-[9px] text-slate-700 font-light">
-            <p>&copy; {new Date().getFullYear()} HUZAYM'S ELIXIRS. All rights reserved.</p>
+            <p>&copy; 2026 HUZAYM'S ELIXIRS. All rights reserved.</p>
           </div>
 
         </div>
