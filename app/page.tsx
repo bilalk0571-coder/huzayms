@@ -95,7 +95,10 @@ export default function Home() {
   const [activeProduct, setActiveProduct] = useState<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  
+  const heroScrollRef = useRef<HTMLDivElement>(null);
   const modalScrollRef = useRef<HTMLDivElement>(null);
+  const isUserInteracting = useRef(false);
 
   const heroSlides = [
     { id: "trio-bundle", image: "/images/hero-trio.jpeg", alt: "Complete Trio Pack Banner Ad" },
@@ -104,13 +107,46 @@ export default function Home() {
     { id: "crimson", image: "/images/hero-crimson.jpeg", alt: "Crimson Leather Bold Ad" }
   ];
 
-  // Auto scroll logic with clean interval handling on user click interaction
+  // Fluid continuous engine cycles banner automatically when user isn't physically interacting
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      if (!isUserInteracting.current && heroScrollRef.current) {
+        const nextIndex = (currentSlide + 1) % heroSlides.length;
+        const targetScrollLeft = heroScrollRef.current.clientWidth * nextIndex;
+        
+        heroScrollRef.current.scrollTo({
+          left: targetScrollLeft,
+          behavior: "smooth"
+        });
+        setCurrentSlide(nextIndex);
+      }
     }, 4000);
+
     return () => clearInterval(timer);
   }, [currentSlide, heroSlides.length]);
+
+  // Tracks manual touch-swipes/scroll movements to keep indicators down below perfectly accurate
+  const handleHeroScroll = (e: any) => {
+    const slideWidth = e.target.clientWidth;
+    if (slideWidth > 0) {
+      const nextCalculatedIndex = Math.round(e.target.scrollLeft / slideWidth);
+      if (nextCalculatedIndex !== currentSlide && nextCalculatedIndex < heroSlides.length) {
+        setCurrentSlide(nextCalculatedIndex);
+      }
+    }
+  };
+
+  const handleIndicatorClick = (index: number) => {
+    if (heroScrollRef.current) {
+      isUserInteracting.current = true;
+      heroScrollRef.current.scrollTo({
+        left: heroScrollRef.current.clientWidth * index,
+        behavior: "smooth"
+      });
+      setCurrentSlide(index);
+      setTimeout(() => { isUserInteracting.current = false; }, 1000);
+    }
+  };
 
   const handleOpenModal = (product: any) => {
     setModalImageIndex(0);
@@ -127,7 +163,6 @@ export default function Home() {
     }
   };
 
-  // Converts vertical mouse wheel events into smooth horizontal scrolling inside the modal gallery
   const handleModalWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     if (modalScrollRef.current) {
       if (e.deltaY !== 0) {
@@ -188,43 +223,51 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Slider Frame */}
+          {/* Direct Swipeable / Scrollable Slider Box */}
           <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
-            <div 
-              onClick={() => {
-                const targeted = PERFUMES.find(p => p.id === heroSlides[currentSlide].id);
-                if (targeted) handleOpenModal(targeted);
-              }}
-              className="relative w-full max-w-sm aspect-[4/5] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/[0.05] bg-[#010307] cursor-pointer group transition-all duration-300"
-            >
-              {heroSlides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                    index === currentSlide ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                  }`}
-                >
-                  <img 
-                    src={slide.image} 
-                    alt={slide.alt} 
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.015]"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-5 flex justify-between items-end">
-                    <span className="text-[8px] tracking-[0.25em] uppercase bg-[#D4AF37] text-black font-bold px-3 py-1.5">
-                      {slide.id === "trio-bundle" ? "Discovery Offer" : "Boutique Fragrance"}
-                    </span>
-                    <span className="text-[8px] text-slate-300 tracking-widest uppercase font-medium group-hover:text-white transition-colors">Details →</span>
+            <div className="relative w-full max-w-sm aspect-[4/5] shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/[0.05] bg-[#010307] group transition-all duration-300">
+              
+              <div 
+                ref={heroScrollRef}
+                onScroll={handleHeroScroll}
+                onTouchStart={() => { isUserInteracting.current = true; }}
+                onTouchEnd={() => { setTimeout(() => { isUserInteracting.current = false; }, 2000); }}
+                onMouseDown={() => { isUserInteracting.current = true; }}
+                onMouseLeave={() => { isUserInteracting.current = false; }}
+                className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              >
+                {heroSlides.map((slide, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      const targeted = PERFUMES.find(p => p.id === slide.id);
+                      if (targeted) handleOpenModal(targeted);
+                    }}
+                    className="w-full h-full flex-shrink-0 snap-center relative cursor-pointer"
+                  >
+                    <img 
+                      src={slide.image} 
+                      alt={slide.alt} 
+                      className="w-full h-full object-cover select-none pointer-events-none"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-5 flex justify-between items-end">
+                      <span className="text-[8px] tracking-[0.25em] uppercase bg-[#D4AF37] text-black font-bold px-3 py-1.5">
+                        {slide.id === "trio-bundle" ? "Discovery Offer" : "Boutique Fragrance"}
+                      </span>
+                      <span className="text-[8px] text-slate-300 tracking-widest uppercase font-medium group-hover:text-white transition-colors">Details →</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
             </div>
 
-            {/* Clickable indicators to switch between slides manually */}
+            {/* Micro Indicators synchronizing seamlessly */}
             <div className="flex gap-2.5 mt-5">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => handleIndicatorClick(index)}
                   className={`h-1 rounded-none transition-all duration-300 cursor-pointer ${
                     index === currentSlide ? "w-6 bg-[#D4AF37]" : "w-1.5 bg-white/10 hover:bg-white/30"
                   }`}
@@ -344,7 +387,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* MODAL Presentation Grid with Wheel scroll translation hooks */}
+      {/* MODAL Presentation Grid */}
       {activeProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
           <div className="bg-[#030a1c] max-w-md w-full max-h-[95vh] flex flex-col relative border border-white/5 shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
@@ -364,7 +407,6 @@ export default function Home() {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               
-              {/* Swipeable Container + Wheel Hook translated into horizontal shifts */}
               <div 
                 onWheel={handleModalWheel}
                 className="relative w-full aspect-[4/5] mx-auto bg-[#010307] border border-white/5 overflow-hidden group/modal"
@@ -385,7 +427,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Sleek Minimalist Left/Right Desktop Navigation Arrows */}
+                {/* Left/Right Desktop Navigation Arrows */}
                 {activeProduct.images.length > 1 && (
                   <>
                     <button 
