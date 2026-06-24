@@ -128,20 +128,20 @@ export default function Home() {
   return (
     <main className="bg-[#020612] text-slate-100 min-h-screen font-sans antialiased selection:bg-[#D4AF37] selection:text-black">
       
-      {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#020612]/90 backdrop-blur-xl border-b border-white/[0.02] px-6 py-5">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
+      {/* Navigation Header - Fixed overlapping with horizontal padding containment */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#020612]/90 backdrop-blur-xl border-b border-white/[0.02] px-4 sm:px-6 py-5">
+        <div className="max-w-6xl mx-auto flex justify-between items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <img 
               src="/images/logo1.png" 
               alt="Huzaym's Elixirs Crest" 
-              className="w-6 h-auto object-contain brightness-110" 
+              className="w-5 h-auto sm:w-6 object-contain brightness-110 flex-shrink-0" 
             />
-            <span className="font-serif tracking-[0.3em] text-xs uppercase font-semibold bg-gradient-to-r from-[#C5A059] to-[#FDF6C7] bg-clip-text text-transparent">
+            <span className="font-serif tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs uppercase font-semibold bg-gradient-to-r from-[#C5A059] to-[#FDF6C7] bg-clip-text text-transparent truncate">
               HUZAYM'S ELIXIRS
             </span>
           </div>
-          <div className="flex gap-8 text-[10px] tracking-[0.3em] font-medium text-slate-400">
+          <div className="flex gap-4 sm:gap-8 text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] font-medium text-slate-400 flex-shrink-0">
             <a href="#" className="hover:text-[#D4AF37] transition-colors uppercase">HOME</a>
             <a href="#collection" className="hover:text-[#D4AF37] transition-colors uppercase">COLLECTION</a>
             <a href="#about" className="hover:text-[#D4AF37] transition-colors uppercase">STORY</a>
@@ -349,7 +349,7 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Custom Arbitrary Classes Added below completely remove scrollbars on Desktop while supporting mousewheels & trackpads */}
+            {/* Scrollbars stripped safely across desktop webkit, firefox, and IE runtimes */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               
               {/* Native Fluid Swipeable Container */}
