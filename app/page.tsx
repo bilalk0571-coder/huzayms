@@ -115,6 +115,16 @@ export default function Home() {
     setActiveProduct(product);
   };
 
+  const handleModalScroll = (e: any) => {
+    const slideWidth = e.target.clientWidth;
+    if (slideWidth > 0) {
+      const newIndex = Math.round(e.target.scrollLeft / slideWidth);
+      if (newIndex !== modalImageIndex && newIndex < activeProduct.images.length) {
+        setModalImageIndex(newIndex);
+      }
+    }
+  };
+
   return (
     <main className="bg-[#020612] text-slate-100 min-h-screen font-sans antialiased selection:bg-[#D4AF37] selection:text-black">
       
@@ -223,12 +233,12 @@ export default function Home() {
             <div className="w-8 h-[1px] bg-[#C5A059] mx-auto mt-4 opacity-40"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex overflow-x-auto pb-6 gap-6 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-x-visible sm:pb-0">
             {PERFUMES.map((perfume) => (
               <div 
                 key={perfume.id}
                 onClick={() => handleOpenModal(perfume)}
-                className="cursor-pointer group flex flex-col justify-between bg-[#030a1c] rounded-none border border-white/[0.04] transition-all duration-300 hover:border-white/10"
+                className="cursor-pointer group flex flex-col justify-between bg-[#030a1c] rounded-none border border-white/[0.04] transition-all duration-300 hover:border-white/10 min-w-[80vw] sm:min-w-0 snap-center"
               >
                 <div>
                   <div className="w-full aspect-[4/5] overflow-hidden bg-[#010307] relative border-b border-white/[0.02]">
@@ -280,13 +290,19 @@ export default function Home() {
               </div>
             ))}
           </div>
+          
+          <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest mt-4 sm:hidden">Swipe Left / Right to Browse Collection ⇄</p>
 
         </div>
       </section>
 
-      {/* Reviews */}
+      {/* Review Section */}
       <section className="py-20 bg-[#020612] border-t border-white/[0.02]">
         <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-[9px] font-bold text-[#C5A059] tracking-[0.4em] uppercase block mb-2">Verified Feedback</span>
+            <h3 className="text-xl font-serif font-light text-white tracking-wide uppercase">What Our Buyers Say</h3>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {REVIEWS.map((rev, i) => (
               <div key={i} className="bg-[#030a1c] border border-white/[0.03] p-6 flex flex-col justify-between">
@@ -315,7 +331,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* MODAL Presentation Grid with dynamic photo support */}
+      {/* MODAL Presentation Grid with Scrollbar-Hidden Architecture */}
       {activeProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
           <div className="bg-[#030a1c] max-w-md w-full max-h-[95vh] flex flex-col relative border border-white/5 shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
@@ -333,23 +349,32 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+            {/* Custom Arbitrary Classes Added below completely remove scrollbars on Desktop while supporting mousewheels & trackpads */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               
-              {/* Image Slideshow Frame -> Pure Modern CSS State Controlled */}
+              {/* Native Fluid Swipeable Container */}
               <div className="relative w-full aspect-[4/5] mx-auto bg-[#010307] border border-white/5 overflow-hidden">
-                <img 
-                  src={activeProduct.images[modalImageIndex]} 
-                  alt={`${activeProduct.name} Gallery View`} 
-                  className="h-full w-full object-cover transition-all duration-300"
-                />
+                <div 
+                  onScroll={handleModalScroll}
+                  className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                >
+                  {activeProduct.images.map((imgUrl: string, idx: number) => (
+                    <div key={idx} className="w-full h-full flex-shrink-0 snap-center">
+                      <img 
+                        src={imgUrl} 
+                        alt={`${activeProduct.name} View ${idx + 1}`} 
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
                 
-                {/* Clean Horizontal Pagination Dot Indicators underneath overlay inside frame */}
+                {/* Horizontal Navigation Dots Overlayed */}
                 {activeProduct.images.length > 1 && (
-                  <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 z-10">
+                  <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 z-10 pointer-events-none">
                     {activeProduct.images.map((_: any, idx: number) => (
-                      <button
+                      <div
                         key={idx}
-                        onClick={() => setModalImageIndex(idx)}
                         className={`h-1.5 transition-all rounded-none ${
                           idx === modalImageIndex ? "w-6 bg-[#D4AF37]" : "w-2 bg-white/30"
                         }`}
@@ -358,6 +383,10 @@ export default function Home() {
                   </div>
                 )}
               </div>
+
+              {activeProduct.images.length > 1 && (
+                <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest -mt-2">Swipe Image to View Gallery ⇄</p>
+              )}
 
               <div className="text-center">
                 <span className="text-[9px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase bg-black px-3 py-1.5 border border-[#D4AF37]/20">
