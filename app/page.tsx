@@ -10,14 +10,14 @@ const PERFUMES = [
     price: "₹500",
     size: "30ml / 1.0 fl.oz",
     tagline: "Aquatic • Fresh • Mysterious",
-    description: "Dive into the depths of pure luxury. Mariana Trench opens with a crushing wave of marine freshness, deep sea salt, and mineral ambergris. It is designed for the modern trailblazer who commands presence. Perfect for daily wear and warm evenings.",
+    description: "It is an indomitable depth, the unknown, a call towards all and nothing - here, there, everywhere.The wholeness of the sea doesn’t need an explanation",
     mainImage: "/images/mariana.jpeg", 
     images: ["/images/mariana.jpeg", "/images/mariana1.jpeg", "/images/mariana2.jpeg", "/images/mariana3.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Mariana%20Trench%20(30ml).",
     notes: {
-      top: "Marine Freshness, Sea Salt",
-      heart: "Mineral Accord",
-      base: "Ambergris, Driftwood"
+      top: "Bergamot & Lemon",
+      heart: "Seaweed, Calone & Hedione",
+      base: "Musk, Ambroxan & Cedar"
     }
   },
   {
@@ -27,14 +27,14 @@ const PERFUMES = [
     price: "₹500",
     size: "30ml / 1.0 fl.oz",
     tagline: "Sweet • Vanillic • Addictive",
-    description: "Indulge in timeless comfort. Cinnabon delivers a rich, gourmand experience layered with warm cinnamon bark, whipped vanilla cream, and a smooth touch of toasted brown sugar. A cozy, intoxicating trail that captures pure indulgence.",
+    description: "This is not loud. This is class. For the man who walks in calm, speaks less, and leaves a trail people remember. Office, weddings, winter nights - cinnabon fits every royal moment.",
     mainImage: "/images/cinnabon.jpeg", 
     images: ["/images/cinnabon.jpeg", "/images/cinnabon1.jpeg", "/images/cinnabon2.jpeg", "/images/cinnabon3.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Cinnabon%20(30ml).",
     notes: {
-      top: "Warm Cinnamon Bark",
-      heart: "Toasted Brown Sugar, Whipped Vanilla",
-      base: "Creamy Amber"
+      top: "Cinnamon, Orange Blossom, Cardamom & Bergamot",
+      heart: "Bourbon Vanilla & elemi",
+      base: "Praline, Musk, Ambroxan, Guaiac Wood, Tonka & Candied Almond"
     }
   },
   {
@@ -44,15 +44,14 @@ const PERFUMES = [
     price: "₹500",
     size: "30ml / 1.0 fl.oz",
     tagline: "Rosey • Leathery • Intoxicating",
-    description: "Dare to be unforgettable. Crimson Leather is a bold fusion of velvet crimson rose petals wrapped tightly in rich Tuscan leather, dark wood notes, and warm saffron. Seductive, striking, and designed for commanding attention during late nights out.",
+    description: "Crimson Leather. Where rose gets raw and leather gets luxe. Dark, intense, unforgettable. Extrait concentration - beast mode performance all day. Crafted for those who dare to stand out.",
     mainImage: "/images/crimson.jpeg", 
     images: ["/images/crimson.jpeg", "/images/crimson1.jpeg", "/images/crimson2.jpeg", "/images/crimson3.jpeg"], 
     waLink: "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Crimson%20Leather%20(30ml).",
     notes: {
-      top: "Crimson Rose Petals, Saffron",
-      heart: "Tuscan Leather",
-      base: "Dark Agarwood"
-    }
+      top: "Plum Cotton Candy Honeybush OR Cyclopia Tobacco Blossom Mock Orange",
+      heart: "Chrysanthemum Labdanum Agarwood Cinnamon Rose Brazilian Rosewood",
+      base: "Patchouli Ambergris Leather Sandalwood Castoreum Cedar"} 
   },
   {
     id: "trio-bundle",
@@ -315,7 +314,7 @@ export default function Home() {
                     {perfume.id === "trio-bundle" && (
                       <div className="absolute top-3 left-3 z-10">
                         <span className="bg-[#D4AF37] text-black font-bold text-[8px] tracking-widest uppercase px-2.5 py-1">
-                          Best Value
+                          Limited Offer 
                         </span>
                       </div>
                     )}
