@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const PERFUMES = [
   {
@@ -95,6 +95,7 @@ export default function Home() {
   const [activeProduct, setActiveProduct] = useState<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const modalScrollRef = useRef<HTMLDivElement>(null);
 
   const heroSlides = [
     { id: "trio-bundle", image: "/images/hero-trio.jpeg", alt: "Complete Trio Pack Banner Ad" },
@@ -103,12 +104,13 @@ export default function Home() {
     { id: "crimson", image: "/images/hero-crimson.jpeg", alt: "Crimson Leather Bold Ad" }
   ];
 
+  // Auto scroll logic with clean interval handling on user click interaction
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, [currentSlide, heroSlides.length]);
 
   const handleOpenModal = (product: any) => {
     setModalImageIndex(0);
@@ -125,10 +127,20 @@ export default function Home() {
     }
   };
 
+  // Converts vertical mouse wheel events into smooth horizontal scrolling inside the modal gallery
+  const handleModalWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (modalScrollRef.current) {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        modalScrollRef.current.scrollLeft += e.deltaY;
+      }
+    }
+  };
+
   return (
     <main className="bg-[#020612] text-slate-100 min-h-screen font-sans antialiased selection:bg-[#D4AF37] selection:text-black">
       
-      {/* Navigation Header - Fixed overlapping with horizontal padding containment */}
+      {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#020612]/90 backdrop-blur-xl border-b border-white/[0.02] px-4 sm:px-6 py-5">
         <div className="max-w-6xl mx-auto flex justify-between items-center gap-4">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -207,13 +219,14 @@ export default function Home() {
               ))}
             </div>
 
+            {/* Clickable indicators to switch between slides manually */}
             <div className="flex gap-2.5 mt-5">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`h-1 rounded-none transition-all duration-300 ${
-                    index === currentSlide ? "w-6 bg-[#D4AF37]" : "w-1.5 bg-white/10"
+                  className={`h-1 rounded-none transition-all duration-300 cursor-pointer ${
+                    index === currentSlide ? "w-6 bg-[#D4AF37]" : "w-1.5 bg-white/10 hover:bg-white/30"
                   }`}
                 />
               ))}
@@ -331,7 +344,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* MODAL Presentation Grid with Scrollbar-Hidden Architecture */}
+      {/* MODAL Presentation Grid with Wheel scroll translation hooks */}
       {activeProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
           <div className="bg-[#030a1c] max-w-md w-full max-h-[95vh] flex flex-col relative border border-white/5 shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
@@ -349,12 +362,15 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Scrollbars stripped safely across desktop webkit, firefox, and IE runtimes */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               
-              {/* Native Fluid Swipeable Container */}
-              <div className="relative w-full aspect-[4/5] mx-auto bg-[#010307] border border-white/5 overflow-hidden">
+              {/* Swipeable Container + Wheel Hook translated into horizontal shifts */}
+              <div 
+                onWheel={handleModalWheel}
+                className="relative w-full aspect-[4/5] mx-auto bg-[#010307] border border-white/5 overflow-hidden group/modal"
+              >
                 <div 
+                  ref={modalScrollRef}
                   onScroll={handleModalScroll}
                   className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
@@ -363,11 +379,37 @@ export default function Home() {
                       <img 
                         src={imgUrl} 
                         alt={`${activeProduct.name} View ${idx + 1}`} 
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover select-none pointer-events-none"
                       />
                     </div>
                   ))}
                 </div>
+
+                {/* Sleek Minimalist Left/Right Desktop Navigation Arrows */}
+                {activeProduct.images.length > 1 && (
+                  <>
+                    <button 
+                      onClick={() => {
+                        if (modalScrollRef.current) {
+                          modalScrollRef.current.scrollLeft -= modalScrollRef.current.clientWidth;
+                        }
+                      }}
+                      className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 border border-white/10 text-white items-center justify-center text-xs opacity-0 group-hover/modal:opacity-100 transition-opacity hover:bg-[#D4AF37] hover:text-black cursor-pointer"
+                    >
+                      ←
+                    </button>
+                    <button 
+                      onClick={() => {
+                        if (modalScrollRef.current) {
+                          modalScrollRef.current.scrollLeft += modalScrollRef.current.clientWidth;
+                        }
+                      }}
+                      className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 border border-white/10 text-white items-center justify-center text-xs opacity-0 group-hover/modal:opacity-100 transition-opacity hover:bg-[#D4AF37] hover:text-black cursor-pointer"
+                    >
+                      →
+                    </button>
+                  </>
+                )}
                 
                 {/* Horizontal Navigation Dots Overlayed */}
                 {activeProduct.images.length > 1 && (
@@ -385,7 +427,7 @@ export default function Home() {
               </div>
 
               {activeProduct.images.length > 1 && (
-                <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest -mt-2">Swipe Image to View Gallery ⇄</p>
+                <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest -mt-2">Scroll / Swipe Image to View Gallery ⇄</p>
               )}
 
               <div className="text-center">
