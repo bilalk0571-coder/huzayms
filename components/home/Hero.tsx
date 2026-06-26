@@ -1,0 +1,110 @@
+"use client";
+
+import React from "react";
+import { HERO_SLIDES, PRODUCTS } from "@/data/products";
+import type { Product } from "@/types";
+import Link from "next/link";
+
+interface HeroProps {
+  currentSlide: number;
+  heroScrollRef: React.RefObject<HTMLDivElement | null>;
+  isUserInteracting: React.MutableRefObject<boolean>;
+  onHeroScroll: (e: React.UIEvent<HTMLDivElement>) => void;
+  onIndicatorClick: (index: number) => void;
+  onOpenModal: (product: Product) => void;
+}
+
+export default function Hero({
+  currentSlide,
+  heroScrollRef,
+  isUserInteracting,
+  onHeroScroll,
+  onIndicatorClick,
+  onOpenModal,
+}: HeroProps) {
+  return (
+    <section className="relative min-h-screen flex items-center pt-28 pb-16 px-6 overflow-hidden bg-[#020612]">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full relative z-10">
+        
+        <div className="lg:col-span-6 flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-8">
+          <img
+            src="/images/logo1.png"
+            alt="Huzaym's Elixirs Crest"
+            className="h-28 w-auto object-contain brightness-110 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+          />
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-[0.06em] uppercase leading-[1.15] text-white">
+              HUZAYM'S <br className="hidden lg:block"/>ELIXIRS
+            </h1>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-light tracking-[0.35em] uppercase">
+              Crafted Fragrances • Lasting Impressions
+            </p>
+          </div>
+          <div className="pt-2 w-full sm:w-auto">
+            <Link href="/#collection">
+                <button className="w-full sm:w-auto px-12 py-4 bg-gradient-to-r from-[#BF953F] to-[#FCF6BA] text-black font-bold uppercase tracking-[0.3em] text-[10px] hover:opacity-95 transition-all rounded-none cursor-pointer">
+    Explore Collection
+             </button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
+          <div className="relative w-full max-w-sm aspect-[4/5] shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/[0.05] bg-[#010307] group transition-all duration-300">
+            <div
+              ref={heroScrollRef}
+              onScroll={onHeroScroll}
+              onTouchStart={() => { isUserInteracting.current = true; }}
+              onTouchEnd={() => { setTimeout(() => { isUserInteracting.current = false; }, 2000); }}
+              onMouseDown={() => { isUserInteracting.current = true; }}
+              onMouseLeave={() => { isUserInteracting.current = false; }}
+              className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {HERO_SLIDES.map((slide, index) => {
+                const targeted = slide.productSlug
+                  ? PRODUCTS.find((p) => p.slug === slide.productSlug)
+                  : undefined;
+
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      if (targeted) onOpenModal(targeted);
+                    }}
+                    className={`w-full h-full flex-shrink-0 snap-center relative ${
+                      targeted ? "cursor-pointer" : "cursor-default"
+                    }`}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      className="w-full h-full object-cover select-none pointer-events-none"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-5 flex justify-between items-end">
+                      <span className="text-[8px] text-slate-300 tracking-widest uppercase font-medium group-hover:text-white transition-colors">
+                        {targeted ? "Details →" : "Launching Soon"}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex gap-2.5 mt-5">
+            {HERO_SLIDES.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => onIndicatorClick(index)}
+                className={`h-1 rounded-none transition-all duration-300 cursor-pointer ${
+                  index === currentSlide ? "w-6 bg-[#D4AF37]" : "w-1.5 bg-white/10 hover:bg-white/30"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
