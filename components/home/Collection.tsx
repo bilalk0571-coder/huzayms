@@ -4,7 +4,7 @@ import React from "react";
 import { PRODUCTS } from "@/data/products";
 import ProductCard from "../product/ProductCard";
 import type { Product } from "@/types";
-
+import Link from "next/link";
 interface CollectionProps {
   onOpenModal: (product: Product) => void;
 }
@@ -29,6 +29,14 @@ export default function Collection({ onOpenModal }: CollectionProps) {
         <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest mt-4 sm:hidden">Swipe Left / Right to Browse Collection ⇄</p>
 
       </div>
+      <div className="mt-16 flex justify-center">
+  <Link
+    href="/products"
+    className="inline-flex items-center border border-[#D4AF37] px-8 py-4 uppercase tracking-[0.3em] text-xs text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"
+  >
+    View Full Collection →
+  </Link>
+</div>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import ProductGallery from "@/components/product/ProductGallery";
 import Layout from "@/components/layout/Layout";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import {
   PRODUCTS,
@@ -70,22 +71,7 @@ export default async function ProductPage({
   return (
     <Layout>
       <div className="pb-16">
-        {/* Adjusted to sit beneath the new fixed global Navbar */}
-        <div className="border-b border-white/5 bg-[#020612] pt-24 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a
-              href="/"
-              className="text-xs uppercase tracking-[0.25em] text-slate-400 hover:text-[#D4AF37] transition"
-            >
-              ← Back
-            </a>
-            <span className="font-serif text-sm tracking-[0.3em] uppercase bg-gradient-to-r from-[#BF953F] to-[#FCF6BA] bg-clip-text text-transparent">
-              HUZAYM'S ELIXIRS
-            </span>
-          </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto px-6 pt-28 pb-16">
           {/* Product */}
           <div className="grid lg:grid-cols-2 gap-12">
             <ProductGallery
@@ -208,7 +194,7 @@ export default async function ProductPage({
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {relatedProducts.map((item) => (
-                <a
+                <Link
                   key={item.slug}
                   href={`/products/${item.slug}`}
                   className="border border-white/10 rounded-2xl p-6 hover:border-[#D4AF37] transition group bg-[#030a1c]"
@@ -226,7 +212,7 @@ export default async function ProductPage({
                   <p className="text-[#C5A059]">
                     {formatPrice(item.price)}
                   </p>
-                </a>
+                </Link>
               ))}
             </div>
           </section>

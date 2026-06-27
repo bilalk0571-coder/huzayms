@@ -41,9 +41,9 @@ export default function Hero({
             </p>
           </div>
           <div className="pt-2 w-full sm:w-auto">
-            <Link href="/#collection">
+            <Link href="/products">
                 <button className="w-full sm:w-auto px-12 py-4 bg-gradient-to-r from-[#BF953F] to-[#FCF6BA] text-black font-bold uppercase tracking-[0.3em] text-[10px] hover:opacity-95 transition-all rounded-none cursor-pointer">
-    Explore Collection
+    Explore Fragrances
              </button>
             </Link>
           </div>

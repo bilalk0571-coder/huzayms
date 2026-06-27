@@ -32,10 +32,10 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/#collection"
+            href="/products"
             className="hover:text-[#D4AF37] transition-colors uppercase"
           >
-            COLLECTION
+            PRODUCTS
           </Link>
 
           <Link
