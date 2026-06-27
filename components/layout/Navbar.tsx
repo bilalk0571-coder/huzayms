@@ -1,52 +1,180 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#020612]/90 backdrop-blur-xl border-b border-white/[0.02] px-4 sm:px-6 py-5">
-      <div className="max-w-6xl mx-auto flex justify-between items-center gap-4">
+    <>
+      {/* Floating Navbar */}
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
+        <div className="h-20 rounded-full border border-[#D4AF37]/20 bg-[#071225]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(0,0,0,0.55)] px-8 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 sm:gap-3 min-w-0 group"
-        >
-          <img
-            src="/images/logo1.png"
-            alt="Huzaym's Elixirs Crest"
-            className="w-5 h-auto sm:w-6 object-contain brightness-110 flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
-          />
-
-          <span className="font-serif tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs uppercase font-semibold bg-gradient-to-r from-[#C5A059] to-[#FDF6C7] bg-clip-text text-transparent truncate">
-            HUZAYM'S ELIXIRS
-          </span>
-        </Link>
-
-        {/* Navigation */}
-        <div className="flex gap-4 sm:gap-8 text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] font-medium text-slate-400 flex-shrink-0">
-
+          {/* Logo */}
           <Link
             href="/"
-            className="hover:text-[#D4AF37] transition-colors uppercase"
+            className="flex items-center gap-4 group"
           >
-            HOME
+            <img
+              src="/images/logo1.png"
+              alt="Huzaym's Elixirs"
+              className="w-9 h-auto transition duration-300 group-hover:scale-105"
+            />
+
+            <span className="font-serif text-sm md:text-2xl tracking-[0.22em] uppercase bg-gradient-to-r from-[#BF953F] via-[#E6C97A] to-[#FCF6BA] bg-clip-text text-transparent whitespace-nowrap">
+              HUZAYM'S ELIXIRS
+            </span>
           </Link>
 
-          <Link
-            href="/products"
-            className="hover:text-[#D4AF37] transition-colors uppercase"
+          {/* Hamburger */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="
+relative
+w-14
+h-14
+rounded-full
+border
+border-white/10
+hover:border-[#D4AF37]
+transition
+duration-300
+flex
+items-center
+justify-center
+"
           >
-            PRODUCTS
-          </Link>
-
-          <Link
-            href="/#about"
-            className="hover:text-[#D4AF37] transition-colors uppercase"
-          >
-            STORY
-          </Link>
-
+            <div className="space-y-2">
+              <span
+                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
+                  open ? "rotate-45 translate-y-[10px]" : ""
+                }`}
+              />
+              <span
+                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
+                  open ? "-rotate-45 -translate-y-[10px]" : ""
+                }`}
+              />
+            </div>
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Temporary Drawer */}
+      <div
+  className={`fixed inset-0 z-40 flex justify-end transition-all duration-500 ${
+    open
+      ? "bg-black/60 backdrop-blur-md opacity-100 pointer-events-auto"
+      : "bg-black/0 opacity-0 pointer-events-none"
+  }`}
+  onClick={() => setOpen(false)}
+>
+          <div
+  onClick={(e) => e.stopPropagation()}
+  className={`w-[360px] max-w-[90%] h-full
+  bg-gradient-to-b
+  from-[#081326]
+  via-[#050d1c]
+  to-[#020612]
+  border-l border-[#D4AF37]/20
+  p-12 pt-28
+  transition-transform duration-500 ease-out
+  ${
+    open ? "translate-x-0" : "translate-x-full"
+  }`}
+>
+
+            <div className="space-y-10">
+
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="
+group
+block
+w-fit
+text-5xl
+font-serif
+font-light
+tracking-wide
+text-white
+transition
+duration-300
+hover:text-[#D4AF37]
+"
+              >
+                HOME
+              </Link>
+
+              <Link
+                href="/products"
+                onClick={() => setOpen(false)}
+                className="
+group
+block
+w-fit
+text-5xl
+font-serif
+font-light
+tracking-wide
+text-white
+transition
+duration-300
+hover:text-[#D4AF37]
+"
+              >
+                PRODUCTS
+              </Link>
+
+              <Link
+                href="/#about"
+                onClick={() => setOpen(false)}
+                className="
+group
+block
+w-fit
+text-5xl
+font-serif
+font-light
+tracking-wide
+text-white
+transition
+duration-300
+hover:text-[#D4AF37]
+"
+              >
+                STORY
+              </Link>
+
+            </div>
+
+            <div className="mt-20 border-t border-white/10 pt-10 space-y-5">
+
+              <a
+                href="https://instagram.com"
+                className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
+              >
+                Instagram
+              </a>
+
+              <a
+                href="https://wa.me/"
+                className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
+              >
+                WhatsApp
+              </a>
+
+            </div>
+          </div>
+        </div>
+      
+    </>
   );
 }

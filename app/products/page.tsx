@@ -22,8 +22,7 @@ backdrop-blur-md pt-32 pb-20 px-6">
             </h1>
 
             <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Every fragrance is handcrafted to deliver exceptional projection,
-              longevity and unforgettable character.
+              Crafted for those who appreciate depth, elegance, and unforgettable presence.
             </p>
           </div>
 
