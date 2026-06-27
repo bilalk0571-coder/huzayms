@@ -9,6 +9,7 @@ import Hero from "@/components/home/Hero";
 import Collection from "@/components/home/Collection";
 import Reviews from "@/components/home/Reviews";
 import Story from "@/components/home/Story";
+import SignatureFinder from "@/components/home/SignatureFinder";
 
 export default function Home() {
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
@@ -93,6 +94,8 @@ export default function Home() {
       />
       
       <Collection onOpenModal={handleOpenModal} />
+
+      <SignatureFinder />
       
       <Reviews />
       
