@@ -67,7 +67,7 @@ justify-center
         </div>
       </nav>
 
-      {/* Temporary Drawer */}
+      {/* Drawer */}
       <div
   className={`fixed inset-0 z-40 flex justify-end transition-all duration-500 ${
     open
@@ -100,14 +100,17 @@ justify-center
 group
 block
 w-fit
-text-5xl
+text-3xl
+md:text-4xl
 font-serif
 font-light
-tracking-wide
+tracking-[0.08em]
+leading-none
 text-white
-transition
+transition-all
 duration-300
 hover:text-[#D4AF37]
+hover:translate-x-2
 "
               >
                 HOME
@@ -120,14 +123,17 @@ hover:text-[#D4AF37]
 group
 block
 w-fit
-text-5xl
+text-3xl
+md:text-4xl
 font-serif
 font-light
-tracking-wide
+tracking-[0.08em]
+leading-none
 text-white
-transition
+transition-all
 duration-300
 hover:text-[#D4AF37]
+hover:translate-x-2
 "
               >
                 PRODUCTS
@@ -140,14 +146,17 @@ hover:text-[#D4AF37]
 group
 block
 w-fit
-text-5xl
+text-3xl
+md:text-4xl
 font-serif
 font-light
-tracking-wide
+tracking-[0.08em]
+leading-none
 text-white
-transition
+transition-all
 duration-300
 hover:text-[#D4AF37]
+hover:translate-x-2
 "
               >
                 STORY
