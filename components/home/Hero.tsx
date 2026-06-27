@@ -23,17 +23,17 @@ export default function Hero({
   onOpenModal,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-16 px-6 overflow-hidden bg-[#020612]">
+    <section className="relative min-h-[100svh] flex items-center pt-24 md:pt-28 pb-8 md:pb-16 px-6 overflow-hidden bg-[#020612]">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full relative z-10">
         
-        <div className="lg:col-span-6 flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-8">
+        <div className="lg:col-span-6 flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-6 lg:space-y-8">
           <img
             src="/images/logo1.png"
             alt="Huzaym's Elixirs Crest"
-            className="h-28 w-auto object-contain brightness-110 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+            className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
           />
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-[0.06em] uppercase leading-[1.15] text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-light tracking-[0.06em] uppercase leading-[1.15] text-white">
               HUZAYM'S <br className="hidden lg:block"/>ELIXIRS
             </h1>
             <p className="text-[10px] sm:text-xs text-slate-400 font-light tracking-[0.35em] uppercase">
@@ -50,7 +50,7 @@ export default function Hero({
         </div>
 
         <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
-          <div className="relative w-full max-w-sm aspect-[4/5] shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/[0.05] bg-[#010307] group transition-all duration-300">
+          <div className="relative w-full max-w-[270px] sm:max-w-sm aspect-[4/5] shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/[0.05] bg-[#010307] group transition-all duration-300">
             <div
               ref={heroScrollRef}
               onScroll={onHeroScroll}

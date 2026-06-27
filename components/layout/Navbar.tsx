@@ -91,7 +91,7 @@ justify-center
   }`}
 >
 
-            <div className="space-y-10">
+            <div className="space-y-8">
 
               <Link
                 href="/"
