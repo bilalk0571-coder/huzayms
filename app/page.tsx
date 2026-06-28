@@ -79,21 +79,21 @@ export default function Home() {
         onIndicatorClick={handleIndicatorClick}
       />
 
-      <FadeIn>
-        <Collection />
-      </FadeIn>
+     <FadeIn>
+  <Collection />
+</FadeIn>
 
-      <FadeIn delay={0.05}>
-        <SignatureFinder />
-      </FadeIn>
+<FadeIn>
+  <SignatureFinder />
+</FadeIn>
 
-      <FadeIn delay={0.1}>
-        <Reviews />
-      </FadeIn>
+<FadeIn>
+  <Reviews />
+</FadeIn>
 
-      <FadeIn delay={0.15}>
-        <Story />
-      </FadeIn>
+<FadeIn>
+  <Story />
+</FadeIn>
     </Layout>
   );
 }

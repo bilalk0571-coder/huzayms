@@ -2,9 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { Search } from "lucide-react";
+import SearchOverlay from "@/components/navbar/SearchOverlay";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 const [showNavbar, setShowNavbar] = useState(true);
 const lastScrollY = useRef(0);
 
@@ -42,60 +45,109 @@ useEffect(() => {
       : "-translate-y-32 -translate-x-1/2"
   }`}
 >
-        <div className="h-20 rounded-full border border-[#D4AF37]/20 bg-[#071225]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(0,0,0,0.55)] px-8 flex items-center justify-between">
+        <div className="h-20 rounded-full border border-[#D4AF37]/20 bg-[#071225]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(0,0,0,0.55)] px-5 md:px-8 flex items-center justify-between">
 
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-4 group"
+            className="flex items-center gap-2 md:gap-4 group"
           >
             <img
               src="/images/logo1.png"
               alt="Huzaym's Elixirs"
-              className="w-9 h-auto transition duration-300 group-hover:scale-105"
+              className="w-8 min-[390px]:w-9 h-auto transition duration-300 group-hover:scale-105"
             />
 
-            <span className="font-serif text-sm md:text-2xl tracking-[0.22em] uppercase bg-gradient-to-r from-[#BF953F] via-[#E6C97A] to-[#FCF6BA] bg-clip-text text-transparent whitespace-nowrap">
-              HUZAYM'S ELIXIRS
-            </span>
+            <span
+  className="
+font-serif
+text-[11px]
+min-[390px]:text-sm
+md:text-2xl
+tracking-[0.16em]
+md:tracking-[0.22em]
+uppercase
+bg-gradient-to-r
+from-[#BF953F]
+via-[#E6C97A]
+to-[#FCF6BA]
+bg-clip-text
+text-transparent
+whitespace-nowrap
+hidden
+min-[390px]:block
+"
+>
+  HUZAYM'S ELIXIRS
+</span>
           </Link>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="
-relative
-w-14
-h-14
+         <div className="flex items-center gap-3">
+
+  {/* Search */}
+  <button
+  onClick={() => setSearchOpen(true)}
+  className="
+w-11
+h-11
+md:w-12
+md:h-12
 rounded-full
 border
 border-white/10
 hover:border-[#D4AF37]
-transition
+transition-all
+duration-300
+flex
+items-center
+justify-center
+hover:text-[#D4AF37]
+text-white
+"
+>
+    <Search size={18} strokeWidth={1.8} />
+  </button>
+
+  {/* Hamburger */}
+  <button
+    onClick={() => setOpen(!open)}
+    className="
+relative
+w-11
+h-11
+md:w-12
+md:h-12
+rounded-full
+border
+border-white/10
+hover:border-[#D4AF37]
+transition-all
 duration-300
 flex
 items-center
 justify-center
 "
-          >
-            <div className="space-y-2">
-              <span
-                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
-                  open ? "rotate-45 translate-y-[10px]" : ""
-                }`}
-              />
-              <span
-                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
-                  open ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block h-[2px] w-8 bg-white transition-all duration-300 ${
-                  open ? "-rotate-45 -translate-y-[10px]" : ""
-                }`}
-              />
-            </div>
-          </button>
+  >
+    <div className="space-y-1.5">
+      <span
+        className={`block h-[2px] w-6 bg-white transition-all duration-300 ${
+          open ? "rotate-45 translate-y-[8px]" : ""
+        }`}
+      />
+      <span
+        className={`block h-[2px] w-6 bg-white transition-all duration-300 ${
+          open ? "opacity-0" : ""
+        }`}
+      />
+      <span
+        className={`block h-[2px] w-6 bg-white transition-all duration-300 ${
+          open ? "-rotate-45 -translate-y-[8px]" : ""
+        }`}
+      />
+    </div>
+  </button>
+
+</div>
         </div>
       </nav>
 
@@ -206,7 +258,7 @@ hover:translate-x-2
               </a>
 
               <a
-                href="https://wa.me/"
+                href="https://wa.me/918928042335"
                 className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
               >
                 WhatsApp
@@ -215,7 +267,10 @@ hover:translate-x-2
             </div>
           </div>
         </div>
-      
+      <SearchOverlay
+  open={searchOpen}
+  onClose={() => setSearchOpen(false)}
+/>
     </>
   );
 }
