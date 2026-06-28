@@ -1,15 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+const [showNavbar, setShowNavbar] = useState(true);
+const lastScrollY = useRef(0);
 
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // Always show near the top
+    if (currentScrollY < 60) {
+      setShowNavbar(true);
+    }
+    // Hide while scrolling down
+    else if (currentScrollY > lastScrollY.current) {
+      setShowNavbar(false);
+    }
+    // Show while scrolling up
+    else {
+      setShowNavbar(true);
+    }
+
+    lastScrollY.current = currentScrollY;
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   return (
     <>
       {/* Floating Navbar */}
-      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
+      <nav
+  className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl transition-transform duration-300 ease-out ${
+    showNavbar
+      ? "translate-y-0 -translate-x-1/2"
+      : "-translate-y-32 -translate-x-1/2"
+  }`}
+>
         <div className="h-20 rounded-full border border-[#D4AF37]/20 bg-[#071225]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(0,0,0,0.55)] px-8 flex items-center justify-between">
 
           {/* Logo */}
