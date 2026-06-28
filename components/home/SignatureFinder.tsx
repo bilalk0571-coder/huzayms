@@ -107,9 +107,9 @@ export default function SignatureFinder() {
               {product.name}
             </h3>
 
-            <p className="text-[#D4AF37] uppercase tracking-[0.28em] text-xs mb-5">
-              {product.tagline}
-            </p>
+            <p className="text-[#D4AF37] uppercase tracking-[0.12em] sm:tracking-[0.28em] text-[9px] sm:text-xs mb-5 whitespace-nowrap">
+  {product.tagline}
+</p>
 
             <p className="text-slate-400 leading-relaxed mb-6 max-w-sm mx-auto">
               {teaser}

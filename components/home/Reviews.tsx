@@ -68,7 +68,7 @@ export default function Reviews() {
           when switching between reviews of slightly different lengths.
           Absolute positioning of children allows for smooth crossfade transitions.
         */}
-        <div className="relative w-full h-[320px] sm:h-[250px] md:h-[220px] flex items-center justify-center">
+        <div className="relative w-full min-h-[320px] flex items-center justify-center">
           {REVIEWS.map((review, index) => (
             <div 
               key={index}
@@ -78,7 +78,7 @@ export default function Reviews() {
                   : "opacity-0 z-0 pointer-events-none"
               }`}
             >
-              <p className="text-lg md:text-2xl text-slate-300 font-light text-center leading-relaxed max-w-3xl mb-8 italic">
+              <p className="text-lg md:text-xl lg:text-2xl text-slate-300 font-light text-center leading-relaxed max-w-3xl mb-8 italic">
                 "{review.quote}"
               </p>
 
@@ -112,9 +112,18 @@ export default function Reviews() {
             </svg>
           </button>
 
-          <span className="text-slate-400 text-sm tracking-[0.2em]">
-            {currentIndex + 1} / {REVIEWS.length}
-          </span>
+          <div className="flex gap-2">
+  {REVIEWS.map((_, index) => (
+    <span
+      key={index}
+      className={`h-2 rounded-full transition-all duration-300 ${
+        index === currentIndex
+          ? "w-8 bg-[#D4AF37]"
+          : "w-2 bg-white/20"
+      }`}
+    />
+  ))}
+</div>
 
           <button 
             onClick={handleNext}
