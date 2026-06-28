@@ -2,7 +2,6 @@
 
 import React from "react";
 import { HERO_SLIDES, PRODUCTS } from "@/data/products";
-import type { Product } from "@/types";
 import Link from "next/link";
 
 interface HeroProps {
@@ -11,7 +10,6 @@ interface HeroProps {
   isUserInteracting: React.MutableRefObject<boolean>;
   onHeroScroll: (e: React.UIEvent<HTMLDivElement>) => void;
   onIndicatorClick: (index: number) => void;
-  onOpenModal: (product: Product) => void;
 }
 
 export default function Hero({
@@ -20,7 +18,6 @@ export default function Hero({
   isUserInteracting,
   onHeroScroll,
   onIndicatorClick,
-  onOpenModal,
 }: HeroProps) {
   return (
     <section className="relative min-h-[100svh] flex items-center pt-40 md:pt-36 pb-8 md:pb-16 px-6 overflow-hidden bg-[#020612]">
@@ -115,15 +112,13 @@ duration-300
                   : undefined;
 
                 return (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      if (targeted) onOpenModal(targeted);
-                    }}
-                    className={`w-full h-full flex-shrink-0 snap-center relative ${
-                      targeted ? "cursor-pointer" : "cursor-default"
-                    }`}
-                  >
+                  <Link
+  key={index}
+  href={targeted ? `/products/${targeted.slug}` : "#"}
+  className={`block w-full h-full flex-shrink-0 snap-center relative ${
+    targeted ? "cursor-pointer" : "cursor-default"
+  }`}
+>
                     <img
                       src={slide.image}
                       alt={slide.alt}
@@ -134,7 +129,7 @@ duration-300
                         {targeted ? "Details →" : "Launching Soon"}
                       </span>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

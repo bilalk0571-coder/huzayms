@@ -3,40 +3,49 @@
 import React from "react";
 import { PRODUCTS } from "@/data/products";
 import ProductCard from "../product/ProductCard";
-import type { Product } from "@/types";
 import Link from "next/link";
-interface CollectionProps {
-  onOpenModal: (product: Product) => void;
-}
 
-export default function Collection({ onOpenModal }: CollectionProps) {
+export default function Collection() {
   return (
-    <section id="collection" className="py-24 scroll-mt-12 bg-[#020612] border-t border-white/[0.02]">
+    <section
+      id="collection"
+      className="py-24 scroll-mt-12 bg-[#020612] border-t border-white/[0.02]"
+    >
       <div className="max-w-6xl mx-auto px-6">
-
         <div className="text-center mb-16">
-          <span className="text-[9px] font-bold text-[#C5A059] tracking-[0.4em] uppercase block mb-2">Our Signature Lines</span>
-          <h2 className="text-2xl md:text-4xl font-serif font-light text-white tracking-wide uppercase">The Elixir Collection</h2>
-          <div className="w-8 h-[1px] bg-[#C5A059] mx-auto mt-4 opacity-40"></div>
+          <span className="text-[9px] font-bold text-[#C5A059] tracking-[0.4em] uppercase block mb-2">
+            Our Signature Lines
+          </span>
+
+          <h2 className="text-2xl md:text-4xl font-serif font-light text-white tracking-wide uppercase">
+            The Elixir Collection
+          </h2>
+
+          <div className="w-8 h-[1px] bg-[#C5A059] mx-auto mt-4 opacity-40" />
         </div>
 
         <div className="flex overflow-x-auto pb-6 gap-6 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-x-visible sm:pb-0">
           {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} onClick={onOpenModal} />
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
           ))}
         </div>
 
-        <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest mt-4 sm:hidden">Swipe Left / Right to Browse Collection ⇄</p>
-
+        <p className="text-[8px] text-center text-slate-500 uppercase tracking-widest mt-4 sm:hidden">
+          Swipe Left / Right to Browse Collection ⇄
+        </p>
       </div>
+
       <div className="mt-16 flex justify-center">
-  <Link
-    href="/products"
-    className="inline-flex items-center border border-[#D4AF37] px-8 py-4 uppercase tracking-[0.3em] text-xs text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"
-  >
-    View Full Collection →
-  </Link>
-</div>
+        <Link
+          href="/products"
+          className="inline-flex items-center border border-[#D4AF37] px-8 py-4 uppercase tracking-[0.3em] text-xs text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"
+        >
+          View Full Collection →
+        </Link>
+      </div>
     </section>
   );
 }

@@ -91,7 +91,7 @@ export default function SignatureFinder() {
               className="w-full h-full object-cover transition-transform duration-700 ease-in-out opacity-100 group-hover:scale-105"
             />
             {/* Gradient Overlay to blend with the card background */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#081326] via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
           </div>
 
           {/* Content Wrapper */}
