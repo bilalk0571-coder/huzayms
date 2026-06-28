@@ -10,6 +10,8 @@ import SignatureFinder from "@/components/home/SignatureFinder";
 import Reviews from "@/components/home/Reviews";
 import Story from "@/components/home/Story";
 
+import FadeIn from "@/components/ui/FadeIn";
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -77,13 +79,21 @@ export default function Home() {
         onIndicatorClick={handleIndicatorClick}
       />
 
-      <Collection />
+      <FadeIn>
+        <Collection />
+      </FadeIn>
 
-      <SignatureFinder />
+      <FadeIn delay={0.05}>
+        <SignatureFinder />
+      </FadeIn>
 
-      <Reviews />
+      <FadeIn delay={0.1}>
+        <Reviews />
+      </FadeIn>
 
-      <Story />
+      <FadeIn delay={0.15}>
+        <Story />
+      </FadeIn>
     </Layout>
   );
 }

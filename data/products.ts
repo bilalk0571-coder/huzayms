@@ -177,9 +177,72 @@ export const PRODUCTS: Product[] = [
     createdAt: "2026-01-01",
   },
 
-
   // ----------------------------------------------------------
-  // 4. THE COMPLETE DISCOVERY TRIO (BUNDLE)
+  // 4. CELESTIAL TIDE
+  // ----------------------------------------------------------
+  {
+    id: "celestial",
+    slug: "celestial-tide",
+    name: "Celestial Tide",
+    type: "Extrait De Parfum",
+
+    isBundle: false,
+    bundleProductSlugs: [],
+
+    price: 500,
+
+    tagline: "Fresh • Tranquil • Refined",
+    description:
+      "A calm, refreshing and timeless fragrance built around Earl Grey tea, bergamot and cucumber. Finished with soft musk, vanilla and beeswax for an elegant everyday scent. Launching soon.",
+
+    size: "30ml / 1.0 fl.oz",
+
+    mainImage: "/images/celestial.jpeg",
+
+    images: [
+      "/images/celestial.jpeg",
+      "/images/celestial1.jpeg",
+      "/images/celestial2.jpeg",
+      "/images/celestial3.jpeg",
+    ],
+
+    notes: {
+      top: ["Earl Grey Tea", "Bergamot"],
+      heart: ["Cucumber"],
+      base: ["Musk", "Vanilla", "Beeswax"],
+    },
+
+    performance: {
+      longevity: 4,
+      projection: 3,
+      season: ["Spring", "Summer"],
+      occasion: ["Daily Wear", "Office", "Casual"],
+    },
+
+    seo: {
+      title: "Celestial Tide Extrait De Parfum | Huzaym's Elixirs",
+      description:
+        "Fresh Earl Grey tea, bergamot and cucumber with soft musk and vanilla. Launching soon.",
+      keywords: [
+        "fresh perfume",
+        "tea perfume",
+        "bergamot perfume",
+        "celestial tide",
+      ],
+    },
+
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    available: true,
+
+    waLink:
+      "https://wa.me/918928042335?text=Hi!%20I'd%20like%20to%20pre-order%20Celestial%20Tide%20(30ml).",
+
+    createdAt: "2026-06-28",
+  },
+  // ----------------------------------------------------------
+  // 5. THE COMPLETE DISCOVERY TRIO (BUNDLE)
   // ----------------------------------------------------------
   {
     id:   "trio-bundle",
@@ -236,12 +299,13 @@ export const PRODUCTS: Product[] = [
 // ------------------------------------------------------------
 
 export const HERO_SLIDES: HeroSlide[] = [
-  {
-    id: "hero-coming-soon",
-    image: "/images/hero-coming-soon.jpeg",
-    alt: "Upcoming Fragrance Announcement",
-    badgeLabel: "Coming Soon",
-  },
+ {
+  id: "hero-celestial",
+  image: "/images/hero-celestial.jpeg",
+  alt: "Celestial Tide Launch",
+  productSlug: "celestial-tide",
+  badgeLabel: "Coming Soon",
+},
 
   {
     id: "hero-trio",

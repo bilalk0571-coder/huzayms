@@ -88,10 +88,18 @@ export default async function ProductPage({
               <h1 className="text-4xl md:text-5xl font-bold">
                 {product.name}
               </h1>
-
+              {product.slug === "celestial-tide" && (
+  <div className="inline-flex mt-3 mb-2">
+    <span className="px-4 py-1 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] uppercase tracking-[0.35em]">
+      Coming Soon
+    </span>
+  </div>
+)}
               <p className="text-[#D4AF37] text-xl">
-                {formatPrice(product.price)}
-              </p>
+  {product.slug === "celestial-tide"
+    ? "Launch Price • ₹500"
+    : formatPrice(product.price)}
+</p>
 
               {product.originalPrice && (
                 <p className="text-gray-500 line-through">
@@ -220,33 +228,36 @@ export default async function ProductPage({
       </div>
 
       {/* WhatsApp Floating Button */}
-      <a
-        href={product.waLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="
-          fixed
-          bottom-5
-          right-5
-          z-50
-          bg-gradient-to-r from-[#BF953F] to-[#FCF6BA]
-          text-black
-          px-5
-          py-3
-          rounded-full
-          font-bold
-          tracking-widest
-          uppercase
-          text-[10px]
-          shadow-[0_4px_14px_0_rgba(212,175,55,0.39)]
-          hover:scale-105
-          hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)]
-          transition-all
-          duration-300
-        "
-      >
-        {formatPrice(product.price)} • Order →
-      </a>
+<a
+  href={product.waLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    fixed
+    bottom-5
+    right-5
+    z-50
+    bg-gradient-to-r
+    from-[#BF953F]
+    to-[#FCF6BA]
+    text-black
+    px-6
+    py-3.5
+    rounded-full
+    font-bold
+    tracking-[0.22em]
+    uppercase
+    text-[10px]
+    shadow-[0_4px_14px_rgba(212,175,55,0.35)]
+    hover:scale-105
+    transition-all
+    duration-300
+  "
+>
+  {product.slug === "celestial-tide"
+    ? "Pre-Order →"
+    : `${formatPrice(product.price)} • Order →`}
+</a>
     </Layout>
   );
 }

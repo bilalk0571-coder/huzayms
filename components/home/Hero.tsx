@@ -85,9 +85,10 @@ cursor-pointer
           <div className="
 relative
 w-full
-max-w-[290px]
-sm:max-w-[380px]
-aspect-[4/5]
+max-w-[320px]
+sm:max-w-[430px]
+lg:max-w-[470px]
+aspect-[4/5] mb-2
 shadow-[0_30px_70px_rgba(0,0,0,0.85)]
 border
 border-white/[0.05]
@@ -124,25 +125,58 @@ duration-300
                       alt={slide.alt}
                       className="w-full h-full object-cover select-none pointer-events-none"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent p-5 flex justify-between items-end">
-                      <span className="text-[8px] text-slate-300 tracking-widest uppercase font-medium group-hover:text-white transition-colors">
-                        {targeted ? "Details →" : "Launching Soon"}
-                      </span>
-                    </div>
+                    <div
+  className="
+    absolute
+    inset-x-0
+    bottom-0
+    flex
+    items-end
+    px-6
+    pb-6
+    pt-20
+    bg-gradient-to-t
+    from-black/80
+    via-black/20
+    to-transparent
+  "
+>
+  <span
+    className="
+      text-[9px]
+      uppercase
+      tracking-[0.28em]
+      font-medium
+      text-white/85
+      transition-all
+      duration-300
+      group-hover:text-[#D4AF37]
+      group-hover:translate-x-1
+    "
+  >
+    {targeted?.slug === "celestial-tide"
+      ? "Pre-Order →"
+      : targeted
+      ? "Details →"
+      : "Launching Soon"}
+  </span>
+</div>
                   </Link>
                 );
               })}
             </div>
           </div>
 
-          <div className="flex gap-2.5 mt-7">
+          <div className="flex justify-center items-center gap-3 mt-4">
             {HERO_SLIDES.map((_, index) => (
               <button
                 key={index}
                 onClick={() => onIndicatorClick(index)}
-                className={`h-1 rounded-none transition-all duration-300 cursor-pointer ${
-                  index === currentSlide ? "w-6 bg-[#D4AF37]" : "w-1.5 bg-white/10 hover:bg-white/30"
-                }`}
+               className={`rounded-full transition-all duration-300 cursor-pointer ${
+  index === currentSlide
+    ? "w-8 h-1.5 bg-[#D4AF37]"
+    : "w-2 h-2 bg-white/20 hover:bg-white/40"
+}`}
               />
             ))}
           </div>

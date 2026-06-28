@@ -6,23 +6,27 @@ import { PRODUCTS, formatPrice } from "@/data/products";
 
 export default function SignatureFinder() {
   const categories = [
-    {
-      name: "Fresh",
-      slug: "mariana-trench",
-    },
-    {
-      name: "Sweet",
-      slug: "cinnabon",
-    },
-    {
-      name: "Dark",
-      slug: "crimson-leather",
-    },
-    {
-      name: "Collection",
-      slug: "complete-discovery-trio",
-    },
-  ];
+  {
+    name: "Fresh",
+    slug: "mariana-trench",
+  },
+  {
+    name: "Sweet",
+    slug: "cinnabon",
+  },
+  {
+    name: "Dark",
+    slug: "crimson-leather",
+  },
+  {
+    name: "Tranquil",
+    slug: "celestial-tide",
+  },
+  {
+    name: "Collection",
+    slug: "complete-discovery-trio",
+  },
+];
 
   const [active, setActive] = useState(0);
 
@@ -30,11 +34,21 @@ export default function SignatureFinder() {
     PRODUCTS.find((p) => p.slug === categories[active].slug) || PRODUCTS[0];
 
   const teasers: Record<string, string> = {
-    "mariana-trench": "Dive into the depths of luxury.",
-    cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
-    "crimson-leather": "Where rose meets leather in perfect darkness.",
-    "complete-discovery-trio": "Experience every signature in one luxurious collection.",
-  };
+  "mariana-trench":
+    "Dive into the depths of luxury.",
+
+  cinnabon:
+    "Warm vanilla wrapped in irresistible sweetness.",
+
+  "crimson-leather":
+    "Where rose meets leather in perfect darkness.",
+
+  "celestial-tide":
+    "Fresh Earl Grey tea, cucumber and soft musk. Calm. Refined. Launching soon.",
+
+  "complete-discovery-trio":
+    "Experience every signature in one luxurious collection.",
+};
 
   const teaser = teasers[product.slug] || product.description;
 
@@ -56,12 +70,12 @@ export default function SignatureFinder() {
         </div>
 
         {/* Category buttons */}
-        <div className="flex justify-center flex-wrap gap-4 mb-16">
+        <div className="flex justify-center gap-4 mb-16 overflow-x-auto scrollbar-hide whitespace-nowrap px-2">
           {categories.map((item, index) => (
             <button
               key={item.name}
               onClick={() => setActive(index)}
-              className={`relative px-2 pb-2 text-sm uppercase tracking-[0.3em] transition-all duration-300 ${
+              className={`relative flex-shrink-0 px-2 pb-2 text-sm uppercase tracking-[0.3em] transition-all duration-300 ${
                 active === index
                   ? "text-[#D4AF37]"
                   : "text-slate-500 hover:text-white"
@@ -80,7 +94,7 @@ export default function SignatureFinder() {
         {/* Product Card */}
         <Link
           href={`/products/${product.slug}`}
-          className="group block max-w-md mx-auto text-center border border-white/10 bg-gradient-to-b from-[#081326] to-[#030814] rounded-[32px] overflow-hidden transition-all duration-500 hover:border-[#D4AF37] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(212,175,55,0.08)] pb-10"
+          className="group block max-w-md mx-auto text-center border border-white/10 bg-[#030814] rounded-[32px] overflow-hidden transition-all duration-500 hover:border-[#D4AF37] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(212,175,55,0.08)] pb-10"
         >
           {/* Edge-to-Edge Image */}
           <div className="relative w-full h-[430px] overflow-hidden mb-8">
@@ -91,7 +105,7 @@ export default function SignatureFinder() {
               className="w-full h-full object-cover transition-transform duration-700 ease-in-out opacity-100 group-hover:scale-105"
             />
             {/* Gradient Overlay to blend with the card background */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-black/5" />
           </div>
 
           {/* Content Wrapper */}
@@ -99,8 +113,10 @@ export default function SignatureFinder() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="h-2 w-2 rounded-full bg-[#D4AF37]" />
               <p className="text-[10px] uppercase tracking-[0.45em] text-[#D4AF37]">
-                Available Now
-              </p>
+  {product.slug === "celestial-tide"
+    ? "Coming Soon"
+    : "Available Now"}
+</p>
             </div>
 
             <h3 className="font-serif text-4xl text-white mb-3 transition-colors duration-300 group-hover:text-[#D4AF37]">
@@ -120,14 +136,18 @@ export default function SignatureFinder() {
                 Starting At
               </p>
               <p className="text-3xl font-semibold text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.15)]">
-                {formatPrice(product.price)}
-              </p>
+  {product.slug === "celestial-tide"
+    ? "₹500"
+    : formatPrice(product.price)}
+</p>
             </div>
 
             {/* Changed from <Link> to <span> to avoid invalid nested <a> tags */}
             <span className="inline-block uppercase tracking-[0.3em] text-sm text-[#D4AF37] group-hover:tracking-[0.35em] transition-all">
-              Explore →
-            </span>
+  {product.slug === "celestial-tide"
+    ? "Pre-Order →"
+    : "Explore →"}
+</span>
           </div>
         </Link>
       </div>

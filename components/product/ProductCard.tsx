@@ -9,78 +9,129 @@ interface ProductCardProps {
   product: Product;
 }
 
+const teasers: Record<string, string> = {
+  "mariana-trench": "Dive into the depths of luxury.",
+  cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
+  "crimson-leather": "Where rose meets leather in perfect darkness.",
+  "complete-discovery-trio":
+    "Experience every signature in one luxurious collection.",
+};
+
 export default function ProductCard({ product }: ProductCardProps) {
+  const teaser = teasers[product.slug] || product.tagline;
+
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group flex flex-col justify-between bg-[#030a1c] rounded-none border border-white/[0.04] transition-all duration-300 hover:border-white/10 min-w-[80vw] sm:min-w-0 snap-center"
+      className="
+group
+flex
+flex-col
+bg-[#030a1c]
+rounded-[28px]
+overflow-hidden
+border
+border-white/5
+transition-all
+duration-500
+hover:border-[#D4AF37]/60
+hover:-translate-y-2
+hover:shadow-[0_20px_50px_rgba(212,175,55,0.10)]
+min-w-[80vw]
+sm:min-w-0
+snap-center
+h-full
+"
     >
-      <div>
-        <div className="w-full aspect-[4/5] overflow-hidden bg-[#010307] relative border-b border-white/[0.02]">
-          <img
-            src={product.mainImage}
-            alt={product.name}
-            className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.02]"
-          />
+      {/* IMAGE */}
+      <div className="relative overflow-hidden aspect-[4/5] bg-[#010307]">
+        <img
+          src={product.mainImage}
+          alt={product.name}
+          className="
+w-full
+h-full
+object-cover
+object-top
+transition-transform
+duration-700
+group-hover:scale-105
+"
+        />
 
-          {product.bestSeller && (
-            <div className="absolute top-3 left-3 z-10">
-              <span className="bg-[#D4AF37] text-black font-bold text-[8px] tracking-widest uppercase px-2.5 py-1">
-                Best Seller
-              </span>
-            </div>
+        {/* Badges */}
+
+        {product.bestSeller && (
+          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+            Best Seller
+          </span>
+        )}
+
+        {!product.bestSeller && product.isBundle && (
+          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+            Limited Offer
+          </span>
+        )}
+
+        {!product.bestSeller &&
+          !product.isBundle &&
+          product.newArrival && (
+            <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+              New Arrival
+            </span>
           )}
+      </div>
 
-          {product.isBundle && !product.bestSeller && (
-            <div className="absolute top-3 left-3 z-10">
-              <span className="bg-[#D4AF37] text-black font-bold text-[8px] tracking-widest uppercase px-2.5 py-1">
-                Limited Offer
-              </span>
-            </div>
-          )}
+      {/* CONTENT */}
 
-          {product.newArrival &&
-            !product.bestSeller &&
-            !product.isBundle && (
-              <div className="absolute top-3 left-3 z-10">
-                <span className="bg-[#D4AF37] text-black font-bold text-[8px] tracking-widest uppercase px-2.5 py-1">
-                  New Arrival
-                </span>
-              </div>
-            )}
-        </div>
+      <div className="px-6 py-6 flex flex-col flex-1 h-full">
 
-        <div className="mt-5 px-4">
-          <h3 className="text-xs font-serif font-medium text-white tracking-wide uppercase group-hover:text-[#D4AF37] transition-colors line-clamp-1">
-            {product.name}
-          </h3>
+        <h3 className="font-serif text-2xl text-white mb-3 transition-colors duration-300 group-hover:text-[#D4AF37]">
+          {product.name}
+        </h3>
 
-          <p className="text-[9px] text-slate-400 tracking-[0.2em] uppercase mt-1 line-clamp-1">
-            {product.type}
-          </p>
+        <div className="w-10 h-px bg-[#D4AF37]/40 mb-4 transition-all duration-300 group-hover:w-16" />
 
-          <p className="text-[8px] text-slate-500 tracking-wider mt-0.5">
+        <p className="text-slate-400 leading-relaxed text-sm min-h-[64px]">
+          {teaser}
+        </p>
+
+        {/* Product Info */}
+
+        <div className="mt-auto pt-6">
+
+          <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
             {product.size}
           </p>
 
-          <div className="flex items-center gap-1 mt-2.5">
-            <span className="text-[#D4AF37] text-[8px]">★★★★★</span>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.30em] text-slate-500">
+            {product.type}
+          </p>
 
-            <span className="text-[8px] font-medium tracking-widest text-slate-500 uppercase">
-              Premium Concentration
-            </span>
-          </div>
+          <p className="mt-3 text-[10px] uppercase tracking-[0.35em] text-[#D4AF37]">
+            Luxury Concentration
+          </p>
+
         </div>
-      </div>
 
-      <div className="mt-6 pt-3 pb-4 px-4 border-t border-white/[0.03] flex justify-between items-center">
-        <span className="text-xs font-medium text-[#C5A059] tracking-wider">
-          {formatPrice(product.price)}
-        </span>
+        {/* PRICE */}
 
-        <span className="text-[8px] tracking-widest font-semibold uppercase text-slate-400 group-hover:text-[#D4AF37] transition-colors">
-          DETAILS →
-        </span>
+        <div className="mt-8 border-t border-white/5 pt-6">
+
+          <p className="text-[10px] uppercase tracking-[0.35em] text-slate-500 mb-2">
+            Starting At
+          </p>
+
+          <p className="text-3xl font-semibold text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.15)]">
+            {formatPrice(product.price)}
+          </p>
+
+          <span className="inline-flex items-center mt-6 text-sm uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:tracking-[0.34em]">
+            Explore →
+          </span>
+
+        </div>
+
       </div>
     </Link>
   );
