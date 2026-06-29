@@ -1,80 +1,90 @@
-import Link from "next/link";
-
 import Layout from "@/components/layout/Layout";
-import { PRODUCTS, formatPrice } from "@/data/products";
+import ProductCard from "@/components/product/ProductCard";
+import DiscoveryCampaign from "@/components/product/DiscoveryCampaign";
+import { PRODUCTS } from "@/data/products";
+import VerifiedReviews from "@/components/product/VerifiedReviews";
+
 
 export default function ProductsPage() {
   return (
     <Layout>
-      <section className="min-h-screen bg-gradient-to-b
-from-[#071225]
-to-[#020612]
-backdrop-blur-md pt-32 pb-20 px-6">
+      <section className="min-h-screen bg-[#020612] pt-32 pb-20 px-6">
+
         <div className="max-w-7xl mx-auto">
 
-          <div className="text-center mb-16">
-            <p className="uppercase tracking-[0.4em] text-[#C5A059] text-xs mb-4">
-              Collection
+          {/* ================= HERO ================= */}
+
+          <div className="text-center mb-20">
+
+            <p className="uppercase tracking-[0.45em] text-[#C5A059] text-[11px] mb-5">
+              Signature Collection
             </p>
 
-            <h1 className="text-5xl md:text-6xl font-serif text-white mb-6">
+            <h1
+              className="
+                font-serif
+                text-5xl
+                md:text-7xl
+                tracking-[0.08em]
+                text-white
+              "
+            >
               Our Fragrances
             </h1>
 
-            <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Crafted for those who appreciate depth, elegance, and unforgettable presence.
+            <div
+              className="
+                w-28
+                h-px
+                mx-auto
+                mt-7
+                bg-gradient-to-r
+                from-transparent
+                via-[#D4AF37]
+                to-transparent
+              "
+            />
+
+            <p
+              className="
+                mt-8
+                max-w-3xl
+                mx-auto
+                text-slate-400
+                leading-8
+                text-lg
+              "
+            >
+              Discover signature fragrances crafted with premium perfume oils,
+              designed to elevate everyday moments with lasting elegance,
+              exceptional performance and timeless character.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
-
-            {PRODUCTS.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/products/${product.slug}`}
-                className="group border border-white/10 bg-[#030a1c] overflow-hidden hover:border-[#D4AF37] transition-all duration-500"
-              >
-                <div className="aspect-[5/6] overflow-hidden">
-                  <img
-                    src={product.mainImage}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                  />
-                </div>
-
-                <div className="p-6 space-y-3">
-
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#C5A059]">
-                    {product.type}
-                  </p>
-
-                  <h2 className="text-2xl text-white font-serif">
-                    {product.name}
-                  </h2>
-
-                  <p className="text-slate-400 text-sm line-clamp-2">
-                    {product.description}
-                  </p>
-
-                  <div className="flex justify-between items-center pt-4">
-
-                    <span className="text-[#D4AF37] text-lg font-semibold">
-                      {formatPrice(product.price)}
-                    </span>
-
-                    <span className="uppercase tracking-[0.3em] text-[10px] text-white group-hover:text-[#D4AF37] transition">
-                      View →
-                    </span>
-
-                  </div>
-
-                </div>
-
-              </Link>
-            ))}
 
           </div>
+
+          {/* ================= PRODUCTS ================= */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+
+            {PRODUCTS
+              .filter((product) => !product.isBundle)
+              .map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+
+          </div>
+
+          {/* ================= DISCOVERY CAMPAIGN ================= */}
+
+          <DiscoveryCampaign />
+          {/* ================= VERIFIED REVIEWS ================= */}
+          <VerifiedReviews /> 
+
         </div>
+
       </section>
     </Layout>
   );

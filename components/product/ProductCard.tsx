@@ -45,7 +45,35 @@ h-full
     >
       {/* IMAGE */}
 
-      <div className="relative overflow-hidden aspect-[4/4.6] bg-[#010307]">
+      <div
+  className="
+    relative
+    overflow-hidden
+    aspect-[4/4.6]
+    bg-[#010307]
+    after:absolute
+    after:inset-0
+    after:ring-1
+    after:ring-[#D4AF37]/0
+    group-hover:after:ring-[#D4AF37]/40
+    after:transition-all
+    after:duration-500
+  "
+>
+      <div
+  className="
+    absolute
+    inset-0
+    -translate-x-full
+    bg-gradient-to-r
+    from-transparent
+    via-white/10
+    to-transparent
+    group-hover:animate-[shine_1.2s]
+    pointer-events-none
+    z-10
+  "
+/>
         <img
           src={product.mainImage}
           alt={product.name}
@@ -56,18 +84,18 @@ object-cover
 object-top
 transition-transform
 duration-700
-group-hover:scale-105
+group-hover:scale-[1.08]
 "
         />
 
         {product.bestSeller && (
-          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-md">
             Best Seller
           </span>
         )}
 
         {!product.bestSeller && product.isBundle && (
-          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+          <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-md">
             Limited Offer
           </span>
         )}
@@ -75,7 +103,7 @@ group-hover:scale-105
         {!product.bestSeller &&
           !product.isBundle &&
           product.newArrival && (
-            <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
+            <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-md">
               New Arrival
             </span>
           )}
@@ -125,9 +153,10 @@ group-hover:scale-105
             {formatPrice(product.price)}
           </p>
 
-          <span className="inline-flex items-center mt-4 text-[12px] uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:tracking-[0.34em]">
-            Explore →
-          </span>
+          <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:gap-4">
+  Explore Fragrance
+  →
+</span>
 
         </div>
 
