@@ -24,7 +24,7 @@ export default function SignatureFinder() {
     },
     {
       name: "Collection",
-      slug: "complete-discovery-trio",
+      slug: "build-your-own-discovery-set",
     },
   ];
 
