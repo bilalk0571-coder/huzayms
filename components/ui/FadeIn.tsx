@@ -14,14 +14,14 @@ export default function FadeIn({
 }: FadeInProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.08,
       }}
       transition={{
-        duration: 0.8,
+        duration: 0.55,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
