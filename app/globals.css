@@ -40,3 +40,21 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes luxuryFloat {
+  0% {
+    transform: scale(1.02) translateY(0px);
+  }
+
+  50% {
+    transform: scale(1.06) translateY(-6px);
+  }
+
+  100% {
+    transform: scale(1.02) translateY(0px);
+  }
+}
+
+.luxury-float {
+  animation: luxuryFloat 16s ease-in-out infinite;
+}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { HERO_SLIDES } from "@/data/products";
-
+import InstagramGallery from "@/components/home/InstagramGallery";
 import Layout from "@/components/layout/Layout";
 import Hero from "@/components/home/Hero";
 import Collection from "@/components/home/Collection";
@@ -89,6 +89,10 @@ export default function Home() {
 
 <FadeIn>
   <Reviews />
+</FadeIn>
+
+<FadeIn>
+<InstagramGallery />
 </FadeIn>
 
 <FadeIn>
