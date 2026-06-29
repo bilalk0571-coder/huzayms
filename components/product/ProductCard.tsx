@@ -28,7 +28,7 @@ group
 flex
 flex-col
 bg-[#030a1c]
-rounded-[28px]
+rounded-[26px]
 overflow-hidden
 border
 border-white/5
@@ -44,7 +44,8 @@ h-full
 "
     >
       {/* IMAGE */}
-      <div className="relative overflow-hidden aspect-[4/5] bg-[#010307]">
+
+      <div className="relative overflow-hidden aspect-[4/4.6] bg-[#010307]">
         <img
           src={product.mainImage}
           alt={product.name}
@@ -58,8 +59,6 @@ duration-700
 group-hover:scale-105
 "
         />
-
-        {/* Badges */}
 
         {product.bestSeller && (
           <span className="absolute top-4 left-4 bg-[#D4AF37] text-black text-[8px] font-bold uppercase tracking-[0.25em] px-3 py-1 rounded-full">
@@ -84,31 +83,31 @@ group-hover:scale-105
 
       {/* CONTENT */}
 
-      <div className="px-6 py-6 flex flex-col flex-1 h-full">
+      <div className="px-5 py-4 flex flex-col flex-1">
 
-        <h3 className="font-serif text-2xl text-white mb-3 transition-colors duration-300 group-hover:text-[#D4AF37]">
+        <h3 className="font-serif text-[1.55rem] leading-none text-white transition-colors duration-300 group-hover:text-[#D4AF37]">
           {product.name}
         </h3>
 
-        <div className="w-10 h-px bg-[#D4AF37]/40 mb-4 transition-all duration-300 group-hover:w-16" />
+        <div className="w-10 h-px bg-[#D4AF37]/40 mt-3 mb-3 transition-all duration-300 group-hover:w-16" />
 
-        <p className="text-slate-400 leading-relaxed text-sm min-h-[64px]">
+        <p className="text-slate-400 text-[14px] leading-6">
           {teaser}
         </p>
 
-        {/* Product Info */}
+        {/* INFO */}
 
-        <div className="mt-auto pt-6">
+        <div className="pt-4 space-y-1.5">
 
-          <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-slate-500">
             {product.size}
           </p>
 
-          <p className="mt-2 text-[11px] uppercase tracking-[0.30em] text-slate-500">
+          <p className="text-[10px] uppercase tracking-[0.30em] text-slate-500">
             {product.type}
           </p>
 
-          <p className="mt-3 text-[10px] uppercase tracking-[0.35em] text-[#D4AF37]">
+          <p className="text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]">
             Luxury Concentration
           </p>
 
@@ -116,17 +115,17 @@ group-hover:scale-105
 
         {/* PRICE */}
 
-        <div className="mt-8 border-t border-white/5 pt-6">
+        <div className="mt-5 border-t border-white/5 pt-4">
 
-          <p className="text-[10px] uppercase tracking-[0.35em] text-slate-500 mb-2">
+          <p className="text-[9px] uppercase tracking-[0.35em] text-slate-500 mb-1">
             Starting At
           </p>
 
-          <p className="text-3xl font-semibold text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.15)]">
+          <p className="text-[30px] font-semibold text-[#D4AF37] leading-none">
             {formatPrice(product.price)}
           </p>
 
-          <span className="inline-flex items-center mt-6 text-sm uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:tracking-[0.34em]">
+          <span className="inline-flex items-center mt-4 text-[12px] uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:tracking-[0.34em]">
             Explore →
           </span>
 

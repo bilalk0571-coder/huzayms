@@ -6,27 +6,27 @@ import { PRODUCTS, formatPrice } from "@/data/products";
 
 export default function SignatureFinder() {
   const categories = [
-  {
-    name: "Fresh",
-    slug: "mariana-trench",
-  },
-  {
-    name: "Sweet",
-    slug: "cinnabon",
-  },
-  {
-    name: "Dark",
-    slug: "crimson-leather",
-  },
-  {
-    name: "Tranquil",
-    slug: "celestial-tide",
-  },
-  {
-    name: "Collection",
-    slug: "complete-discovery-trio",
-  },
-];
+    {
+      name: "Fresh",
+      slug: "mariana-trench",
+    },
+    {
+      name: "Sweet",
+      slug: "cinnabon",
+    },
+    {
+      name: "Dark",
+      slug: "crimson-leather",
+    },
+    {
+      name: "Tranquil",
+      slug: "celestial-tide",
+    },
+    {
+      name: "Collection",
+      slug: "complete-discovery-trio",
+    },
+  ];
 
   const [active, setActive] = useState(0);
 
@@ -34,21 +34,12 @@ export default function SignatureFinder() {
     PRODUCTS.find((p) => p.slug === categories[active].slug) || PRODUCTS[0];
 
   const teasers: Record<string, string> = {
-  "mariana-trench":
-    "Dive into the depths of luxury.",
-
-  cinnabon:
-    "Warm vanilla wrapped in irresistible sweetness.",
-
-  "crimson-leather":
-    "Where rose meets leather in perfect darkness.",
-
-  "celestial-tide":
-    "Fresh Earl Grey tea, cucumber and soft musk. Calm. Refined. Launching soon.",
-
-  "complete-discovery-trio":
-    "Experience every signature in one luxurious collection.",
-};
+    "mariana-trench": "Dive into the depths of luxury.",
+    cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
+    "crimson-leather": "Where rose meets leather in perfect darkness.",
+    "celestial-tide": "Fresh Earl Grey tea, cucumber and soft musk. Calm. Refined. Launching soon.",
+    "complete-discovery-trio": "Experience every signature in one luxurious collection.",
+  };
 
   const teaser = teasers[product.slug] || product.description;
 
@@ -69,8 +60,8 @@ export default function SignatureFinder() {
           </p>
         </div>
 
-        {/* Category buttons */}
-        <div className="flex justify-center gap-4 mb-16 overflow-x-auto scrollbar-hide whitespace-nowrap px-2">
+        {/* Category buttons - FIXED FOR MOBILE SCROLLING */}
+        <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-16 overflow-x-auto scrollbar-hide whitespace-nowrap px-2 pb-4 w-full">
           {categories.map((item, index) => (
             <button
               key={item.name}
@@ -113,10 +104,8 @@ export default function SignatureFinder() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="h-2 w-2 rounded-full bg-[#D4AF37]" />
               <p className="text-[10px] uppercase tracking-[0.45em] text-[#D4AF37]">
-  {product.slug === "celestial-tide"
-    ? "Coming Soon"
-    : "Available Now"}
-</p>
+                {product.slug === "celestial-tide" ? "Coming Soon" : "Available Now"}
+              </p>
             </div>
 
             <h3 className="font-serif text-4xl text-white mb-3 transition-colors duration-300 group-hover:text-[#D4AF37]">
@@ -124,8 +113,8 @@ export default function SignatureFinder() {
             </h3>
 
             <p className="text-[#D4AF37] uppercase tracking-[0.12em] sm:tracking-[0.28em] text-[9px] sm:text-xs mb-5 whitespace-nowrap">
-  {product.tagline}
-</p>
+              {product.tagline}
+            </p>
 
             <p className="text-slate-400 leading-relaxed mb-6 max-w-sm mx-auto">
               {teaser}
@@ -136,18 +125,13 @@ export default function SignatureFinder() {
                 Starting At
               </p>
               <p className="text-3xl font-semibold text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.15)]">
-  {product.slug === "celestial-tide"
-    ? "₹500"
-    : formatPrice(product.price)}
-</p>
+                {product.slug === "celestial-tide" ? "₹500" : formatPrice(product.price)}
+              </p>
             </div>
 
-            {/* Changed from <Link> to <span> to avoid invalid nested <a> tags */}
             <span className="inline-block uppercase tracking-[0.3em] text-sm text-[#D4AF37] group-hover:tracking-[0.35em] transition-all">
-  {product.slug === "celestial-tide"
-    ? "Pre-Order →"
-    : "Explore →"}
-</span>
+              {product.slug === "celestial-tide" ? "Pre-Order →" : "Explore →"}
+            </span>
           </div>
         </Link>
       </div>
