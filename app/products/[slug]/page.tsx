@@ -3,6 +3,9 @@ import Layout from "@/components/layout/Layout";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import ProductAccordion from "@/components/product/ProductAccordion";
+import ProductCard from "@/components/product/ProductCard";
+import Reviews from "@/components/home/Reviews";
 
 import {
   PRODUCTS,
@@ -64,9 +67,10 @@ export default async function ProductPage({
     notFound();
   }
 
-  const relatedProducts = PRODUCTS.filter(
-    (p) => p.slug !== product.slug
-  ).slice(0, 3);
+  const relatedProducts = PRODUCTS
+  .filter((p) => p.slug !== product.slug)
+  .sort((a, b) => Number(b.isBundle) - Number(a.isBundle))
+  .slice(0, 4);
 
   return (
     <Layout>
@@ -81,13 +85,19 @@ export default async function ProductPage({
 
             {/* Details */}
             <div className="space-y-6 lg:sticky lg:top-24 h-fit">
-              <p className="text-sm uppercase tracking-[0.3em] text-[#D4AF37]">
-                {product.type}
-              </p>
+              
 
               <h1 className="text-4xl md:text-5xl font-bold">
                 {product.name}
+                
               </h1>
+              <div className="flex items-center gap-2">
+  <span className="text-[#D4AF37]">★★★★★</span>
+
+  <span className="text-slate-400 text-sm">
+    4.9 / 5
+  </span>
+</div>
               {product.slug === "celestial-tide" && (
   <div className="inline-flex mt-3 mb-2">
     <span className="px-4 py-1 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] uppercase tracking-[0.35em]">
@@ -95,10 +105,14 @@ export default async function ProductPage({
     </span>
   </div>
 )}
-              <p className="text-[#D4AF37] text-xl">
+              <p className="text-[#D4AF37] text-4xl font-semibold">
+                
   {product.slug === "celestial-tide"
     ? "Launch Price • ₹500"
     : formatPrice(product.price)}
+</p>
+<p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+  {product.size}
 </p>
 
               {product.originalPrice && (
@@ -107,128 +121,220 @@ export default async function ProductPage({
                 </p>
               )}
 
-              <p className="text-gray-300 leading-relaxed">
+              <p className="max-w-lg text-slate-400 leading-8 text-[15px]">
                 {product.description}
               </p>
+              <a
+  href={product.waLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    mt-3
+    inline-flex
+    items-center
+    justify-center
+    rounded-full
+    bg-[#D4AF37]
+    px-8
+    py-4
+    text-xs
+    font-semibold
+    uppercase
+    tracking-[0.25em]
+    text-black
+    transition-all
+    duration-300
+    hover:scale-[1.03]
+    hover:shadow-[0_12px_30px_rgba(212,175,55,0.35)]
+  "
+>
+  {product.slug === "celestial-tide"
+    ? "Pre-Order on WhatsApp →"
+    : "Order on WhatsApp →"}
+</a>
+<div className="grid grid-cols-2 gap-5 pt-8 border-t border-white/10">
+
+  <div>
+    <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
+      Longevity
+    </p>
+
+    <p className="mt-2 text-white">
+      {LONGEVITY_LABELS[product.performance.longevity]}
+    </p>
+  </div>
+
+  <div>
+    <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
+      Projection
+    </p>
+
+    <p className="mt-2 text-white">
+      {PROJECTION_LABELS[product.performance.projection]}
+    </p>
+  </div>
+
+</div>
             </div>
           </div>
 
-          {/* Notes */}
-          <section className="mt-20">
-            <h2 className="text-[#D4AF37] uppercase tracking-[0.3em] text-sm mb-8">
-              Olfactory Architecture
-            </h2>
+          {/* ================= FRAGRANCE NOTES ================= */}
 
-            <div className="grid md:grid-cols-3 border-y border-white/10">
-              <div className="py-8 text-center md:border-r border-white/10">
-                <h3 className="text-slate-500 uppercase tracking-[0.25em] text-xs mb-4">
-                  Top Notes
-                </h3>
-                <p className="text-white text-xl font-light">
-                  {product.notes.top.join(" & ")}
-                </p>
-              </div>
+<ProductAccordion title="Fragrance Notes">
 
-              <div className="py-8 text-center md:border-r border-white/10">
-                <h3 className="text-slate-500 uppercase tracking-[0.25em] text-xs mb-4">
-                  Heart Profile
-                </h3>
-                <p className="text-white text-xl font-light">
-                  {product.notes.heart.join(" & ")}
-                </p>
-              </div>
+  <div className="grid md:grid-cols-3 gap-8">
 
-              <div className="py-8 text-center">
-                <h3 className="text-slate-500 uppercase tracking-[0.25em] text-xs mb-4">
-                  Base Finish
-                </h3>
-                <p className="text-white text-xl font-light">
-                  {product.notes.base.join(" & ")}
-                </p>
-              </div>
-            </div>
-          </section>
+    <div>
 
-          {/* Performance */}
-          <section className="mt-20">
-            <h2 className="text-[#D4AF37] uppercase tracking-[0.3em] text-sm mb-8">
-              Performance
-            </h2>
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Top Notes
+      </p>
 
-            <div className="border-t border-white/10">
-              <div className="flex justify-between py-5 border-b border-white/10">
-                <span className="text-slate-400">
-                  Longevity
-                </span>
-                <span className="text-white">
-                  {LONGEVITY_LABELS[product.performance.longevity]}
-                </span>
-              </div>
+      <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+        {product.notes.top.join(" • ")}
+      </p>
 
-              <div className="flex justify-between py-5 border-b border-white/10">
-                <span className="text-slate-400">
-                  Projection
-                </span>
-                <span className="text-white">
-                  {PROJECTION_LABELS[product.performance.projection]}
-                </span>
-              </div>
+    </div>
 
-              <div className="flex justify-between py-5 border-b border-white/10">
-                <span className="text-slate-400">
-                  Best Seasons
-                </span>
-                <span className="text-white text-right">
-                  {product.performance.season.join(", ")}
-                </span>
-              </div>
+    <div>
 
-              <div className="flex justify-between py-5 border-b border-white/10">
-                <span className="text-slate-400">
-                  Best Occasions
-                </span>
-                <span className="text-white text-right">
-                  {product.performance.occasion.join(", ")}
-                </span>
-              </div>
-            </div>
-          </section>
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Heart Notes
+      </p>
 
-          {/* Related Products */}
-          <section className="mt-20">
-            <h2 className="text-3xl font-bold mb-8 text-white">
-              You May Also Like
-            </h2>
+      <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+        {product.notes.heart.join(" • ")}
+      </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedProducts.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/products/${item.slug}`}
-                  className="border border-white/10 rounded-2xl p-6 hover:border-[#D4AF37] transition group bg-[#030a1c]"
-                >
-                  <div className="aspect-[4/5] overflow-hidden rounded-xl mb-4 bg-[#010307]">
-                    <img
-                      src={item.mainImage}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                  <h3 className="font-semibold mb-2 text-white group-hover:text-[#D4AF37] transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="text-[#C5A059]">
-                    {formatPrice(item.price)}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
+    </div>
+
+    <div>
+
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Base Notes
+      </p>
+
+      <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+        {product.notes.base.join(" • ")}
+      </p>
+
+    </div>
+
+  </div>
+
+</ProductAccordion>
+{/* ================= DETAILS ================= */}
+
+<ProductAccordion title="Performance & Usage">
+
+  <div className="grid md:grid-cols-2 gap-8">
+
+    <div>
+
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Longevity
+      </p>
+
+      <p className="mt-2 text-white text-lg">
+        {LONGEVITY_LABELS[product.performance.longevity]}
+      </p>
+
+    </div>
+
+    <div>
+
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Projection
+      </p>
+
+      <p className="mt-2 text-white text-lg">
+        {PROJECTION_LABELS[product.performance.projection]}
+      </p>
+
+    </div>
+
+    <div>
+
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Best Season
+      </p>
+
+      <p className="mt-2 text-white leading-7">
+        {product.performance.season.join(" • ")}
+      </p>
+
+    </div>
+
+    <div>
+
+      <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+        Best Occasion
+      </p>
+
+      <p className="mt-2 text-white leading-7">
+        {product.performance.occasion.join(" • ")}
+      </p>
+
+    </div>
+
+  </div>
+
+</ProductAccordion>
+
+         
+          {/* ================= RELATED PRODUCTS ================= */}
+
+<section className="mt-24">
+
+  <div className="text-center mb-12">
+
+    <p className="uppercase tracking-[0.35em] text-[11px] text-[#D4AF37]">
+      Discover More
+    </p>
+
+    <h2 className="mt-4 font-serif text-3xl md:text-5xl text-white">
+      You May Also Like
+    </h2>
+
+    <div
+      className="
+        w-20
+        h-px
+        mx-auto
+        mt-6
+        bg-gradient-to-r
+        from-transparent
+        via-[#D4AF37]
+        to-transparent
+      "
+    />
+
+    <p className="mt-5 text-slate-400 max-w-xl mx-auto">
+      Explore more signature creations from the HUZAYM'S collection.
+    </p>
+
+  </div>
+
+  <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+  {relatedProducts.map((product) => (
+
+    <ProductCard
+  key={product.id}
+  product={product}
+  compact
+/>
+
+  ))}
+
+</div>
+
+</section>
         </div>
       </div>
 
       {/* WhatsApp Floating Button */}
-<a
+{/*<a
   href={product.waLink}
   target="_blank"
   rel="noopener noreferrer"
@@ -257,7 +363,8 @@ export default async function ProductPage({
   {product.slug === "celestial-tide"
     ? "Pre-Order →"
     : `${formatPrice(product.price)} • Order →`}
-</a>
+</a>*/} 
+<Reviews />
     </Layout>
   );
 }

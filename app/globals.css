@@ -58,3 +58,25 @@ body {
 .luxury-float {
   animation: luxuryFloat 16s ease-in-out infinite;
 }
+
+/* ================= Reviews Auto Scroll ================= */
+
+@keyframes reviewScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-review-scroll {
+  display: flex;
+  width: max-content;
+  animation: reviewScroll 45s linear infinite;
+}
+
+.animate-review-scroll:hover {
+  animation-play-state: paused;
+}

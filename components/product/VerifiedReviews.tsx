@@ -6,37 +6,42 @@ import { REVIEWS } from "./ReviewData";
 export default function VerifiedReviews() {
   return (
     <section className="mt-20">
-
-      <div className="overflow-hidden rounded-[30px] bg-[#060E1C]">
-
+      <div
+        className="
+          group
+          overflow-hidden
+          rounded-[26px]
+          bg-[#030a1c]
+          border
+          border-white/5
+          transition-all
+          duration-500
+          hover:border-[#D4AF37]/60
+          hover:-translate-y-2
+          hover:shadow-[0_20px_50px_rgba(212,175,55,0.10)]
+        "
+      >
         {/* ================= MOBILE ================= */}
 
         <div className="lg:hidden">
-
           {/* Reviews */}
 
-          <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory px-5 pt-4">
-
-            <div className="flex gap-3 w-max">
-
-              {REVIEWS.map((review, index) => (
-
+          <div className="overflow-hidden px-5 pt-5">
+            <div className="animate-review-scroll gap-3">
+              {[...REVIEWS, ...REVIEWS].map((review, index) => (
                 <div
                   key={index}
-                  className="snap-center flex-shrink-0 w-[175px]"
+                  className="flex-shrink-0 w-[175px]"
                 >
-
                   <div
                     className="
-                    overflow-hidden
-                    rounded-2xl
-                    transition-all
-                    duration-500
-                    hover:scale-[1.02]
-                    hover:brightness-105
+                      overflow-hidden
+                      rounded-2xl
+                      transition-transform
+                      duration-700
+                      hover:scale-[1.03]
                     "
                   >
-
                     <Image
                       src={review}
                       alt={`Review ${index + 1}`}
@@ -44,111 +49,154 @@ export default function VerifiedReviews() {
                       height={800}
                       className="w-full h-auto"
                     />
-
                   </div>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
 
           {/* Text */}
 
-          <div className="px-5 py-5 text-center">
-
-            <h2 className="font-serif text-[28px] leading-tight text-white">
-              Real Customer
+          <div className="px-6 py-6 text-center">
+            <h2
+              className="
+                font-serif
+                text-[1.8rem]
+                leading-none
+                text-white
+                transition-colors
+                duration-300
+                group-hover:text-[#D4AF37]
+              "
+            >
+              Trusted By
               <br />
-              Experiences
+              Fragrance Lovers
             </h2>
 
-            <p className="mt-2 max-w-[250px] mx-auto text-[13px] leading-6 text-slate-400">
-              Real conversations. Real reactions. Nothing speaks louder.
+            <div
+              className="
+                w-10
+                h-px
+                mx-auto
+                bg-[#D4AF37]/40
+                mt-4
+                mb-4
+                transition-all
+                duration-300
+                group-hover:w-16
+              "
+            />
+
+            <p
+              className="
+                max-w-[250px]
+                mx-auto
+                text-[14px]
+                leading-6
+                text-slate-400
+              "
+            >
+              Honest conversations and genuine reactions from customers across
+              India.
             </p>
 
-            <div className="mt-4">
-
-              <p className="text-[#D4AF37] text-lg">
+            <div className="mt-5">
+              <p className="text-[#D4AF37] text-lg tracking-[0.15em]">
                 ★★★★★
               </p>
 
-              <p className="mt-1 text-[15px] text-white">
+              <p className="mt-2 text-white text-[15px] font-medium">
                 Rated 4.9 / 5
               </p>
 
-              <p className="text-[11px] text-slate-500">
-                500+ Happy Customers
+              <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-slate-500">
+                500+ Verified Customers
               </p>
-
             </div>
-
           </div>
-
         </div>
 
         {/* ================= DESKTOP ================= */}
 
         <div className="hidden lg:grid lg:grid-cols-[30%_70%] items-center">
-
           {/* LEFT */}
 
           <div className="px-10">
-
-            <h2 className="font-serif text-[38px] leading-tight text-white">
-              Real Customer
+            <h2
+              className="
+                font-serif
+                text-[2.4rem]
+                leading-none
+                text-white
+                transition-colors
+                duration-300
+                group-hover:text-[#D4AF37]
+              "
+            >
+              Trusted By
               <br />
-              Experiences
+              Fragrance Lovers
             </h2>
 
-            <p className="mt-4 max-w-[300px] text-[15px] leading-7 text-slate-400">
-              Real conversations. Real reactions. Nothing speaks louder.
+            <div
+              className="
+                w-10
+                h-px
+                bg-[#D4AF37]/40
+                mt-4
+                mb-4
+                transition-all
+                duration-300
+                group-hover:w-16
+              "
+            />
+
+            <p
+              className="
+                max-w-[300px]
+                text-[14px]
+                leading-6
+                text-slate-400
+              "
+            >
+              Honest conversations and genuine reactions from customers across
+              India.
             </p>
 
             <div className="mt-6">
-
-              <p className="text-[#D4AF37] text-xl">
+              <p className="text-[#D4AF37] text-lg tracking-[0.15em]">
                 ★★★★★
               </p>
 
-              <p className="mt-1 text-lg text-white">
+              <p className="mt-2 text-white text-[15px] font-medium">
                 Rated 4.9 / 5
               </p>
 
-              <p className="text-sm text-slate-500">
-                500+ Happy Customers
+              <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-slate-500">
+                500+ Verified Customers
               </p>
-
             </div>
-
           </div>
 
           {/* RIGHT */}
 
-          <div className="overflow-x-auto scrollbar-hide py-6 pr-8">
-
-            <div className="flex gap-4 w-max">
-
-              {REVIEWS.map((review, index) => (
-
+          <div className="overflow-hidden py-6 pr-8">
+            <div className="animate-review-scroll gap-4">
+              {[...REVIEWS, ...REVIEWS].map((review, index) => (
                 <div
                   key={index}
                   className="w-[220px] flex-shrink-0"
                 >
-
                   <div
                     className="
-                    overflow-hidden
-                    rounded-2xl
-                    transition-all
-                    duration-500
-                    hover:scale-[1.02]
-                    hover:brightness-105
+                      overflow-hidden
+                      rounded-2xl
+                      transition-transform
+                      duration-700
+                      hover:scale-[1.03]
                     "
                   >
-
                     <Image
                       src={review}
                       alt={`Review ${index + 1}`}
@@ -156,21 +204,13 @@ export default function VerifiedReviews() {
                       height={1000}
                       className="w-full h-auto"
                     />
-
                   </div>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

@@ -3,7 +3,7 @@ import ProductCard from "@/components/product/ProductCard";
 import DiscoveryCampaign from "@/components/product/DiscoveryCampaign";
 import { PRODUCTS } from "@/data/products";
 import VerifiedReviews from "@/components/product/VerifiedReviews";
-
+import WhyHuzayms from "@/components/product/WhyHuzayms";
 
 export default function ProductsPage() {
   return (
@@ -81,7 +81,9 @@ export default function ProductsPage() {
 
           <DiscoveryCampaign />
           {/* ================= VERIFIED REVIEWS ================= */}
-          <VerifiedReviews /> 
+          <VerifiedReviews />
+          {/* ================= VERIFIED REVIEWS ================= */}
+          <WhyHuzayms /> 
 
         </div>
 
