@@ -356,10 +356,10 @@ export const PRODUCTS: Product[] = [
 
   size: "4 × 30ml Bottles",
 
-  mainImage: "/images/complete-collection1.jpeg",
+  mainImage: "/images/complete-collection.jpeg",
 
   images: [
-    "/images/complete-collection1.jpeg",
+    "/images/complete-collection.jpeg",
     "/images/complete-collection2.jpeg",
     "/images/complete-collection3.jpeg",
     "/images/complete-collection4.jpeg",
@@ -438,7 +438,7 @@ export const HERO_SLIDES: HeroSlide[] = [
 {
   id: "hero-complete",
 
-  image: "/images/complete-collection-banner.jpeg",
+  image: "/images/complete-collection.jpeg",
 
   alt: "The Complete Collection",
 
