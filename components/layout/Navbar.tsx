@@ -251,7 +251,7 @@ hover:translate-x-2
             <div className="mt-20 border-t border-white/10 pt-10 space-y-5">
 
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/huzayms"
                 className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
               >
                 Instagram

@@ -274,10 +274,10 @@ export const PRODUCTS: Product[] = [
 
   images: [
     "/images/trio-pack.jpeg",
-    "/images/trio-pack1.png",
-    "/images/trio-pack2.png",
-    "/images/trio-pack3.png",
-    "/images/trio-pack4.png",
+    "/images/trio-pack1.jpeg",
+    "/images/trio-pack2.jpeg",
+    "/images/trio-pack3.jpeg",
+    "/images/trio-pack4.jpeg",
   ],
 
   notes: {
@@ -344,7 +344,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "hero-trio",
     image: "/images/hero-trio.jpeg",
     alt: "Complete Trio Pack Banner Ad",
-    productSlug: "complete-discovery-trio",
+    productSlug: "build-your-own-discovery-set",
     badgeLabel: "Discovery Offer",
   },
 
