@@ -15,6 +15,8 @@ const teasers: Record<string, string> = {
   "mariana-trench": "Dive into the depths of luxury.",
   cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
   "crimson-leather": "Where rose meets leather in perfect darkness.",
+   "complete-collection":
+    "Own the entire HUZAYM'S signature collection.",
   "complete-discovery-trio":
     "Experience every signature in one luxurious collection.",
 };
@@ -44,7 +46,7 @@ export default function ProductCard({
         hover:shadow-[0_20px_50px_rgba(212,175,55,0.10)]
         snap-center
         h-full
-        ${compact ? "min-w-0" : "min-w-[80vw] sm:min-w-0"}
+        ${compact ? "min-w-0" : "min-w-[73vw] sm:min-w-0"}
       `}
     >
       {/* IMAGE */}

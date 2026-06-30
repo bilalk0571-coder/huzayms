@@ -24,9 +24,12 @@ export default function Collection() {
           <div className="w-8 h-[1px] bg-[#C5A059] mx-auto mt-4 opacity-40" />
         </div>
 
-        <div className="flex overflow-x-auto pb-6 gap-6 xl:gap-7 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-x-visible sm:pb-0">
+        <div className="flex overflow-x-auto px-1 pb-6 gap-4 xl:gap-6 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-x-visible sm:pb-0">
           {PRODUCTS.map((product) => (
-            <div key={product.id}>
+            <div
+  key={product.id}
+  className="snap-center sm:snap-none"
+>
               <ProductCard product={product} />
             </div>
           ))}

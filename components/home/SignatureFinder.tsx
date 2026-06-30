@@ -1,72 +1,61 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { PRODUCTS, formatPrice } from "@/data/products";
+import { PRODUCTS } from "@/data/products";
+import ProductCard from "@/components/product/ProductCard";
 
 export default function SignatureFinder() {
   const categories = [
     {
       name: "Fresh",
-      slug: "mariana-trench",
+      slugs: ["mariana-trench", "celestial-tide"],
     },
     {
       name: "Sweet",
-      slug: "cinnabon",
+      slugs: ["cinnabon"],
     },
     {
       name: "Dark",
-      slug: "crimson-leather",
+      slugs: ["crimson-leather"],
     },
     {
-      name: "Tranquil",
-      slug: "celestial-tide",
-    },
-    {
-      name: "Collection",
-      slug: "build-your-own-discovery-set",
+      name: "Bundles",
+      slugs: ["build-your-own-discovery-set", "complete-collection"],
     },
   ];
 
   const [active, setActive] = useState(0);
 
-  const product =
-    PRODUCTS.find((p) => p.slug === categories[active].slug) || PRODUCTS[0];
-
-  const teasers: Record<string, string> = {
-    "mariana-trench": "Dive into the depths of luxury.",
-    cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
-    "crimson-leather": "Where rose meets leather in perfect darkness.",
-    "celestial-tide": "Fresh Earl Grey tea, cucumber and soft musk. Calm. Refined. Launching soon.",
-    "complete-discovery-trio": "Experience every signature in one luxurious collection.",
-  };
-
-  const teaser = teasers[product.slug] || product.description;
+  const activeCategory = categories[active];
+  
+  const filteredProducts = activeCategory.slugs
+    .map((slug) => PRODUCTS.find((p) => p.slug === slug))
+    .filter((product): product is NonNullable<typeof product> => !!product);
 
   return (
-    <section className="relative py-28 px-6 bg-[#020612] overflow-hidden">
+    <section className="relative py-20 md:py-24 px-4 bg-[#020612] overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <p className="uppercase tracking-[0.4em] text-[#D4AF37] text-xs mb-4">
             Find Your Signature
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
+          <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
             Discover Your Signature
           </h2>
           <p className="max-w-xl mx-auto text-slate-400 leading-relaxed">
-            Discover the fragrance that reflects your personality.
+            Choose a fragrance that feels unmistakably yours.
           </p>
         </div>
 
-        {/* Category buttons - FIXED FOR MOBILE SCROLLING */}
-        <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-16 overflow-x-auto scrollbar-hide whitespace-nowrap px-2 pb-4 w-full">
+        {/* Category buttons */}
+        <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-10 overflow-x-auto scrollbar-hide whitespace-nowrap px-2 pb-4 w-full">
           {categories.map((item, index) => (
             <button
               key={item.name}
               onClick={() => setActive(index)}
-              className={`relative flex-shrink-0 px-2 pb-2 text-sm uppercase tracking-[0.3em] transition-all duration-300 ${
+              className={`relative flex-shrink-0 px-2 pb-2 text-sm uppercase tracking-[0.3em] transition-all duration-300 cursor-pointer ${
                 active === index
                   ? "text-[#D4AF37]"
                   : "text-slate-500 hover:text-white"
@@ -82,58 +71,26 @@ export default function SignatureFinder() {
           ))}
         </div>
 
-        {/* Product Card */}
-        <Link
-          href={`/products/${product.slug}`}
-          className="group block max-w-md mx-auto text-center border border-white/10 bg-[#030814] rounded-[32px] overflow-hidden transition-all duration-500 hover:border-[#D4AF37] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(212,175,55,0.08)] pb-10"
-        >
-          {/* Edge-to-Edge Image */}
-          <div className="relative w-full h-[430px] overflow-hidden mb-8">
-            <img
-              key={product.slug}
-              src={product.mainImage}
-              alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 ease-in-out opacity-100 group-hover:scale-105"
-            />
-            {/* Gradient Overlay to blend with the card background */}
-            <div className="absolute inset-0 bg-black/5" />
-          </div>
-
-          {/* Content Wrapper */}
-          <div className="px-8">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="h-2 w-2 rounded-full bg-[#D4AF37]" />
-              <p className="text-[10px] uppercase tracking-[0.45em] text-[#D4AF37]">
-                {product.slug === "celestial-tide" ? "Coming Soon" : "Available Now"}
-              </p>
+        {/* Dynamic Product Grid / Carousel Layout */}
+        {filteredProducts.length === 1 ? (
+          <div className="flex justify-center max-w-4xl mx-auto w-full px-6 sm:px-0 -mx-6 sm:mx-auto">
+            <div className="w-[82%] sm:w-full sm:max-w-[436px] flex-shrink-0">
+              <ProductCard product={filteredProducts[0]} compact />
             </div>
-
-            <h3 className="font-serif text-4xl text-white mb-3 transition-colors duration-300 group-hover:text-[#D4AF37]">
-              {product.name}
-            </h3>
-
-            <p className="text-[#D4AF37] uppercase tracking-[0.12em] sm:tracking-[0.28em] text-[9px] sm:text-xs mb-5 whitespace-nowrap">
-              {product.tagline}
-            </p>
-
-            <p className="text-slate-400 leading-relaxed mb-6 max-w-sm mx-auto">
-              {teaser}
-            </p>
-
-            <div className="mb-8">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-slate-500 mb-2">
-                Starting At
-              </p>
-              <p className="text-3xl font-semibold text-[#D4AF37] drop-shadow-[0_0_10px_rgba(212,175,55,0.15)]">
-                {product.slug === "celestial-tide" ? "₹500" : formatPrice(product.price)}
-              </p>
-            </div>
-
-            <span className="inline-block uppercase tracking-[0.3em] text-sm text-[#D4AF37] group-hover:tracking-[0.35em] transition-all">
-              {product.slug === "celestial-tide" ? "Pre-Order →" : "Explore →"}
-            </span>
           </div>
-        </Link>
+        ) : (
+          <div className="flex sm:grid sm:grid-cols-2 overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none scrollbar-hide gap-6 max-w-4xl mx-auto w-full px-6 sm:px-0 pb-2 sm:pb-0 -mx-6 sm:mx-auto">
+            {filteredProducts.map((product) => (
+              <div 
+                key={product.id} 
+                className="w-[82%] sm:w-full flex-shrink-0 snap-center"
+              >
+                <ProductCard product={product} compact />
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );

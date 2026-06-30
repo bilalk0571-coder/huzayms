@@ -73,8 +73,28 @@ export default async function ProductPage({
 
   const relatedProducts = PRODUCTS
   .filter((p) => p.slug !== product.slug)
-  .sort((a, b) => Number(b.isBundle) - Number(a.isBundle))
-  .slice(0, 4);
+  .sort((a, b) => {
+
+    // Bundles first
+    if (a.isBundle !== b.isBundle) {
+      return Number(b.isBundle) - Number(a.isBundle);
+    }
+
+    // Featured fragrances next
+    if (a.featured !== b.featured) {
+      return Number(b.featured) - Number(a.featured);
+    }
+
+    // New arrivals after featured
+    if ((a.newArrival ?? false) !== (b.newArrival ?? false)) {
+      return Number(b.newArrival ?? false) - Number(a.newArrival ?? false);
+    }
+
+    // Otherwise keep original order
+    return 0;
+
+  })
+  .slice(0, 5);
 
   return (
     <Layout>
@@ -175,75 +195,241 @@ export default async function ProductPage({
             </div>
           </FadeIn>
 
-          {/* ================= 2. FRAGRANCE NOTES Accordion ================= */}
-          <FadeIn>
-            <ProductAccordion title="Fragrance Notes">
-              <div className="grid md:grid-cols-3 gap-8">
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Top Notes
-                  </p>
-                  <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-                    {product.notes.top.join(" • ")}
-                  </p>
-                </div>
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Heart Notes
-                  </p>
-                  <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-                    {product.notes.heart.join(" • ")}
-                  </p>
-                </div>
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Base Notes
-                  </p>
-                  <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-                    {product.notes.base.join(" • ")}
-                  </p>
-                </div>
-              </div>
+          {/* ================= 2. FRAGRANCE NOTES / BUNDLE ================= */}
+
+<FadeIn>
+
+  <ProductAccordion
+    title={product.isBundle ? "What's Included" : "Fragrance Notes"}
+  >
+              {product.isBundle ? (
+
+<div className="space-y-6">
+
+  <div className="flex justify-between items-center border-b border-white/10 pb-5">
+
+    <div>
+
+      <h3 className="text-white text-xl font-serif">
+        Mariana Trench
+      </h3>
+
+      <p className="text-slate-400 text-sm mt-1">
+        Fresh • Aquatic • Mysterious
+      </p>
+
+    </div>
+
+  </div>
+
+  <div className="flex justify-between items-center border-b border-white/10 pb-5">
+
+    <div>
+
+      <h3 className="text-white text-xl font-serif">
+        Cinnabon
+      </h3>
+
+      <p className="text-slate-400 text-sm mt-1">
+        Sweet • Warm • Addictive
+      </p>
+
+    </div>
+
+  </div>
+
+  <div className="flex justify-between items-center border-b border-white/10 pb-5">
+
+    <div>
+
+      <h3 className="text-white text-xl font-serif">
+        Crimson Leather
+      </h3>
+
+      <p className="text-slate-400 text-sm mt-1">
+        Rose • Leather • Bold
+      </p>
+
+    </div>
+
+  </div>
+
+  <div className="flex justify-between items-center">
+
+    <div>
+
+      <h3 className="text-white text-xl font-serif">
+        Celestial Tide
+      </h3>
+
+      <p className="text-slate-400 text-sm mt-1">
+        Fresh • Tea • Citrus
+      </p>
+
+    </div>
+
+  </div>
+
+  <div className="pt-4">
+
+    <p className="text-[#D4AF37] uppercase tracking-[0.25em] text-xs">
+
+      {product.slug === "complete-collection"
+
+        ? "Includes all four signature fragrances."
+
+        : "Choose any three during WhatsApp ordering."}
+
+    </p>
+
+  </div>
+
+</div>
+
+) : (
+
+<div className="grid md:grid-cols-3 gap-8">
+
+  <div>
+
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Top Notes
+    </p>
+
+    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+      {product.notes.top.join(" • ")}
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Heart Notes
+    </p>
+
+    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+      {product.notes.heart.join(" • ")}
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Base Notes
+    </p>
+
+    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+      {product.notes.base.join(" • ")}
+    </p>
+
+  </div>
+
+</div>
+
+)}
             </ProductAccordion>
           </FadeIn>
 
           {/* ================= 3. PERFORMANCE Accordion ================= */}
           <FadeIn>
             <ProductAccordion title="Performance & Usage">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Longevity
-                  </p>
-                  <p className="mt-2 text-white text-lg">
-                    {LONGEVITY_LABELS[product.performance.longevity]}
-                  </p>
-                </div>
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Projection
-                  </p>
-                  <p className="mt-2 text-white text-lg">
-                    {PROJECTION_LABELS[product.performance.projection]}
-                  </p>
-                </div>
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Best Season
-                  </p>
-                  <p className="mt-2 text-white leading-7">
-                    {product.performance.season.join(" • ")}
-                  </p>
-                </div>
-                <div>
-                  <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-                    Best Occasion
-                  </p>
-                  <p className="mt-2 text-white leading-7">
-                    {product.performance.occasion.join(" • ")}
-                  </p>
-                </div>
-              </div>
+              {product.isBundle ? (
+
+<div className="grid md:grid-cols-2 gap-8">
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Collection
+    </p>
+
+    <p className="mt-2 text-white text-lg">
+      {product.slug === "complete-collection"
+        ? "All 4 Signature Fragrances"
+        : "Choose Any 3 Fragrances"}
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Bottle Size
+    </p>
+
+    <p className="mt-2 text-white text-lg">
+      {product.size}
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Best For
+    </p>
+
+    <p className="mt-2 text-white leading-7">
+      Discovering every signature fragrance.
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Savings
+    </p>
+
+    <p className="mt-2 text-[#D4AF37] text-lg">
+      Save ₹{product.originalPrice! - product.price}
+    </p>
+  </div>
+
+</div>
+
+) : (
+
+<div className="grid md:grid-cols-2 gap-8">
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Longevity
+    </p>
+
+    <p className="mt-2 text-white text-lg">
+      {LONGEVITY_LABELS[product.performance.longevity]}
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Projection
+    </p>
+
+    <p className="mt-2 text-white text-lg">
+      {PROJECTION_LABELS[product.performance.projection]}
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Best Season
+    </p>
+
+    <p className="mt-2 text-white leading-7">
+      {product.performance.season.join(" • ")}
+    </p>
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+      Best Occasion
+    </p>
+
+    <p className="mt-2 text-white leading-7">
+      {product.performance.occasion.join(" • ")}
+    </p>
+  </div>
+
+</div>
+
+)}
             </ProductAccordion>
           </FadeIn>
 

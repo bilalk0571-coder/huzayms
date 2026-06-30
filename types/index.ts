@@ -9,7 +9,8 @@ export type ConcentrationType =
   | "Eau De Toilette"
   | "Eau De Parfum"
   | "Extrait De Parfum"
-  | "Discovery Set";
+  | "Discovery Set"
+  | "Complete Collection";
 
 /**
  * 1–5 scale. Render as icons in the UI — never expose the raw number.

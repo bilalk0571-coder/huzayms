@@ -248,7 +248,7 @@ export const PRODUCTS: Product[] = [
 {
   id: "trio-bundle",
   slug: "build-your-own-discovery-set",
-  name: "Build Your Own Discovery Set",
+  name: "Discovery Trio (choose any 3)",
   type: "Discovery Set",
 
   isBundle: true,
@@ -324,6 +324,102 @@ export const PRODUCTS: Product[] = [
   createdAt: "2026-01-01",
 },
 
+// ----------------------------------------------------------
+// 6. The Complete Collection
+// ----------------------------------------------------------
+{
+  id: "complete-collection",
+
+  slug: "complete-collection",
+
+  name: "The Complete Collection",
+
+  type: "Complete Collection",
+
+  isBundle: true,
+
+  bundleProductSlugs: [
+    "mariana-trench",
+    "cinnabon",
+    "crimson-leather",
+    "celestial-tide",
+  ],
+
+  price: 1600,
+
+  originalPrice: 2000,
+
+  tagline: "Four Worlds. One Signature.",
+
+  description:
+    "Own the complete HUZAYM'S ELIXIRS collection in one premium set. Four distinct fragrances crafted for every mood, every season and every occasion. From aquatic freshness to warm gourmand sweetness, bold leather intensity and tranquil elegance — experience the entire journey.",
+
+  size: "4 × 30ml Bottles",
+
+  mainImage: "/images/complete-collection1.jpeg",
+
+  images: [
+    "/images/complete-collection1.jpeg",
+    "/images/complete-collection2.jpeg",
+    "/images/complete-collection3.jpeg",
+    "/images/complete-collection4.jpeg",
+    "/images/complete-collection5.jpeg",
+  ],
+
+  notes: {
+    top: ["Four Signature Fragrances"],
+    heart: ["Complete Luxury Experience"],
+    base: ["One Unforgettable Collection"],
+  },
+
+  performance: {
+    longevity: 5,
+    projection: 5,
+    season: [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter",
+    ],
+    occasion: [
+      "Daily Wear",
+      "Office",
+      "Casual",
+      "Outdoor",
+      "Date Night",
+      "Wedding",
+      "Formal",
+      "Evening",
+    ],
+  },
+
+  seo: {
+    title:
+      "The Complete Collection | HUZAYM'S ELIXIRS",
+
+    description:
+      "Experience all four signature fragrances in one premium collection. Save ₹400 with the complete HUZAYM'S ELIXIRS bundle.",
+
+    keywords: [
+      "perfume gift set",
+      "luxury fragrance bundle",
+      "complete perfume collection",
+      "huzayms collection",
+    ],
+  },
+
+  featured: true,
+
+  bestSeller: true,
+
+  available: true,
+
+  waLink:
+    "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20The%20Complete%20Collection%20(4%20Fragrances).",
+
+  createdAt: "2026-01-01",
+},
+
 ];
 
 
@@ -338,6 +434,17 @@ export const HERO_SLIDES: HeroSlide[] = [
   alt: "Celestial Tide Launch",
   productSlug: "celestial-tide",
   badgeLabel: "Coming Soon",
+},
+{
+  id: "hero-complete",
+
+  image: "/images/complete-collection-banner.jpeg",
+
+  alt: "The Complete Collection",
+
+  productSlug: "complete-collection",
+
+  badgeLabel: "Save ₹400",
 },
 
   {
