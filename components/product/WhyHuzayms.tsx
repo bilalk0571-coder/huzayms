@@ -44,7 +44,7 @@ const features = [
 
 export default function WhyHuzayms() {
   return (
-    <section className="mt-20">
+    <section className="mt-12">
 
       <div className="max-w-6xl mx-auto px-6">
 

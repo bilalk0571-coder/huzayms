@@ -98,8 +98,8 @@ export default async function ProductPage({
 
   return (
     <Layout>
-      <div className="pb-16">
-        <div className="max-w-7xl mx-auto px-6 pt-28 pb-16">
+      <div className="pb-0">
+        <div className="max-w-7xl mx-auto px-6 pt-28 pb-6">
           
           {/* ================= 1. MAIN PRODUCT SHOWCASE ================= */}
           <FadeIn>
@@ -121,9 +121,9 @@ export default async function ProductPage({
                   </span>
                 </div>
                 {product.slug === "celestial-tide" && (
-                  <div className="inline-flex mt-3 mb-2">
-                    <span className="px-4 py-1 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] uppercase tracking-[0.35em]">
-                      Coming Soon
+                  <div className="inline-flex mt-1 mb-1">
+                    <span className="px-3 py-1 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] uppercase tracking-[0.35em]">
+                    New Arrival
                     </span>
                   </div>
                 )}
@@ -173,24 +173,7 @@ export default async function ProductPage({
                     ? "Pre-Order on WhatsApp →"
                     : "Order on WhatsApp →"}
                 </a>
-                <div className="grid grid-cols-2 gap-5 pt-8 border-t border-white/10">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
-                      Longevity
-                    </p>
-                    <p className="mt-2 text-white">
-                      {LONGEVITY_LABELS[product.performance.longevity]}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
-                      Projection
-                    </p>
-                    <p className="mt-2 text-white">
-                      {PROJECTION_LABELS[product.performance.projection]}
-                    </p>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </FadeIn>
@@ -435,7 +418,7 @@ export default async function ProductPage({
 
           {/* ================= 4. RELATED PRODUCTS GRID ================= */}
           <FadeIn>
-            <section className="mt-24">
+            <section className="mt-12">
               <div className="text-center mb-12">
                 <p className="uppercase tracking-[0.35em] text-[11px] text-[#D4AF37]">
                   Discover More
@@ -459,7 +442,7 @@ export default async function ProductPage({
                   Explore more signature creations from the HUZAYM'S collection.
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-5 max-w-7xl mx-auto">
                 {relatedProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -472,17 +455,17 @@ export default async function ProductPage({
           </FadeIn>
 
           {/* ================= 5. VERIFIED CUSTOMER REVIEWS BANNER ================= */}
-          <FadeIn>
-            <VerifiedReviews />
-          </FadeIn>
+<FadeIn>
+  <VerifiedReviews />
+</FadeIn>
 
-        </div>
-      </div>
+</div>
+</div>
 
-      {/* ================= 6. CAROUSEL REVIEWS COMPONENT ================= */}
-      <FadeIn>
-        <WhyHuzayms />
-      </FadeIn>
+{/* ================= 6. CAROUSEL REVIEWS COMPONENT ================= */}
+<FadeIn>
+  <WhyHuzayms />
+</FadeIn>
     </Layout>
   );
 }

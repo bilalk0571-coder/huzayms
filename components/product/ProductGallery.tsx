@@ -27,7 +27,7 @@ export default function ProductGallery({
 
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-5 lg:grid-cols-5 gap-2 lg:gap-2.5 max-w-7xl mx-auto">
           {images.map((image, index) => (
             <button
               key={image}

@@ -33,11 +33,11 @@ export default function SignatureFinder() {
     .filter((product): product is NonNullable<typeof product> => !!product);
 
   return (
-    <section className="relative py-20 md:py-24 px-4 bg-[#020612] overflow-hidden">
+    <section className="relative py-20 md:py-24 px-6 bg-[#020612] overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         {/* Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 md:mb-12">
           <p className="uppercase tracking-[0.4em] text-[#D4AF37] text-xs mb-4">
             Find Your Signature
           </p>
@@ -50,7 +50,7 @@ export default function SignatureFinder() {
         </div>
 
         {/* Category buttons */}
-        <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-10 overflow-x-auto scrollbar-hide whitespace-nowrap px-2 pb-4 w-full">
+        <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-8 md:mb-10 overflow-x-auto scrollbar-hide whitespace-nowrap px-2 pb-4 w-full">
           {categories.map((item, index) => (
             <button
               key={item.name}

@@ -123,24 +123,37 @@ export default function ProductCard({
           flex
           flex-col
           flex-1
-          ${compact ? "px-4 py-3" : "px-5 py-4"}
+          ${compact ? "px-4 py-2.5" : "px-5 py-4"}
         `}
       >
         <h3
-          className={`
-            font-serif
-            leading-none
-            text-white
-            transition-colors
-            duration-300
-            group-hover:text-[#D4AF37]
-            ${compact ? "text-xl" : "text-[1.55rem]"}
-          `}
-        >
+  className={`
+    font-serif
+    leading-none
+    text-white
+    transition-colors
+    duration-300
+    group-hover:text-[#D4AF37]
+    min-h-[48px]
+    flex items-end
+    ${compact ? "text-[19px]" : "text-[1.55rem]"}
+  `}
+>
           {product.name}
         </h3>
+        
 
-        <div className="w-10 h-px bg-[#D4AF37]/40 mt-3 mb-3 transition-all duration-300 group-hover:w-16" />
+        <div
+          className={`
+            w-10
+            h-px
+            bg-[#D4AF37]/40
+            transition-all
+            duration-300
+            group-hover:w-16
+            ${compact ? "mt-1.5 mb-1.5" : "mt-3 mb-3"}
+          `}
+        />
 
         {!compact && (
           <p className="text-slate-400 text-[14px] leading-6">
@@ -168,26 +181,36 @@ export default function ProductCard({
           className={`
             border-t
             border-white/5
-            ${compact ? "mt-3 pt-3" : "mt-5 pt-4"}
+            ${compact ? "mt-1 pt-2" : "mt-5 pt-4"}
           `}
         >
-          <p className="text-[9px] uppercase tracking-[0.35em] text-slate-500 mb-1">
-            Starting At
-          </p>
+          {!compact && (
+            <p className="text-[9px] uppercase tracking-[0.35em] text-slate-500 mb-1">
+              Starting At
+            </p>
+          )}
 
-          <p
-            className={`
-              font-semibold
-              text-[#D4AF37]
-              leading-none
-              ${compact ? "text-2xl" : "text-[30px]"}
-            `}
-          >
-            {formatPrice(product.price)}
-          </p>
+          <div className="flex items-end gap-2">
+            <p
+              className={`
+                font-semibold
+                text-[#D4AF37]
+                leading-none
+                ${compact ? "text-[26px]" : "text-[30px]"}
+              `}
+            >
+              {formatPrice(product.price)}
+            </p>
+
+            {product.originalPrice && (
+  <span className="text-[11px] text-slate-500 line-through mb-1">
+    {formatPrice(product.originalPrice)}
+  </span>
+)}
+          </div>
 
           {!compact && (
-            <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:gap-4">
+            <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em] text-[#D4AF37] transition-all duration-300 group-hover:gap-4 mt-3">
               Explore Fragrance →
             </span>
           )}

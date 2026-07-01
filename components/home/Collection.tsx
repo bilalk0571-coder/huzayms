@@ -8,11 +8,11 @@ import Link from "next/link";
 export default function Collection() {
   return (
     <section
-      id="collection"
-      className="py-24 scroll-mt-12 bg-[#020612] border-t border-white/[0.02]"
-    >
+  id="collection"
+  className="pt-20 pb-16 md:pt-24 md:pb-20 scroll-mt-12 bg-[#020612] border-t border-white/[0.02]"
+>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="text-[9px] font-bold text-[#C5A059] tracking-[0.4em] uppercase block mb-2">
             Curated Signature Collection
           </span>
@@ -40,7 +40,7 @@ export default function Collection() {
         </p>
       </div>
 
-      <div className="mt-16 flex justify-center">
+      <div className="mt-10 flex justify-center">
         <Link
           href="/products"
           className="inline-flex items-center border border-[#D4AF37] px-8 py-4 uppercase tracking-[0.3em] text-xs text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"

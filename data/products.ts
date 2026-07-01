@@ -248,7 +248,7 @@ export const PRODUCTS: Product[] = [
 {
   id: "trio-bundle",
   slug: "build-your-own-discovery-set",
-  name: "Discovery Trio (choose any 3)",
+  name: "Discovery Trio",
   type: "Discovery Set",
 
   isBundle: true,
@@ -359,7 +359,7 @@ export const PRODUCTS: Product[] = [
   mainImage: "/images/complete-collection.jpeg",
 
   images: [
-    "/images/complete-collection.jpeg",
+    "/images/complete-collection1.jpeg",
     "/images/complete-collection2.jpeg",
     "/images/complete-collection3.jpeg",
     "/images/complete-collection4.jpeg",

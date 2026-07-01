@@ -5,7 +5,7 @@ import { REVIEWS } from "./ReviewData";
 
 export default function VerifiedReviews() {
   return (
-    <section className="mt-20">
+    <section className="mt-12">
       <div
         className="
           group
