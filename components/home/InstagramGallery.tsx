@@ -13,7 +13,7 @@ const galleryImages = [
 
 export default function InstagramGallery() {
   return (
-    <section className="relative overflow-hidden border-y border-white/[0.04] bg-[#020612] py-24">
+    <section className="relative overflow-hidden border-y border-white/[0.04] bg-[#020612] pt-20 pb-16 md:pt-24 md:pb-20">
 
     
 
@@ -57,7 +57,7 @@ export default function InstagramGallery() {
 
         {/* Gallery */}
 
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-2 gap-2 lg:gap-6 lg:grid-cols-3">
 
           {galleryImages.map((image, index) => (
             <a

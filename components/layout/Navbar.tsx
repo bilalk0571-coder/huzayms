@@ -162,110 +162,124 @@ justify-center
 >
           <div
   onClick={(e) => e.stopPropagation()}
-  className={`w-[360px] max-w-[90%] h-full
+  className={`w-[300px] max-w-[82%] h-full
   bg-gradient-to-b
   from-[#081326]
   via-[#050d1c]
   to-[#020612]
   border-l border-[#D4AF37]/20
-  p-12 pt-28
+  px-10 pt-20 pb-10
   transition-transform duration-500 ease-out
   ${
     open ? "translate-x-0" : "translate-x-full"
   }`}
 >
 
-            <div className="space-y-8">
+  <p className="mb-10 text-[11px] uppercase tracking-[0.45em] text-[#D4AF37]">
+    HUZAYM'S
+  </p>
 
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className="
-group
-block
-w-fit
-text-3xl
-md:text-4xl
-font-serif
-font-light
-tracking-[0.08em]
-leading-none
-text-white
-transition-all
-duration-300
-hover:text-[#D4AF37]
-hover:translate-x-2
-"
-              >
-                HOME
-              </Link>
+  <div className="space-y-6">
 
-              <Link
-                href="/products"
-                onClick={() => setOpen(false)}
-                className="
-group
-block
-w-fit
-text-3xl
-md:text-4xl
-font-serif
-font-light
-tracking-[0.08em]
-leading-none
-text-white
-transition-all
-duration-300
-hover:text-[#D4AF37]
-hover:translate-x-2
-"
-              >
-                PRODUCTS
-              </Link>
+    <Link
+      href="/"
+      onClick={() => setOpen(false)}
+      className="
+      group
+      block
+      w-fit
+      text-xl
+      font-light
+      uppercase
+      tracking-[0.28em]
+      text-white/90
+      transition-all
+      duration-300
+      hover:text-[#D4AF37]
+      hover:translate-x-1
+      "
+    >
+      HOME
+    </Link>
 
-              <Link
-                href="/#about"
-                onClick={() => setOpen(false)}
-                className="
-group
-block
-w-fit
-text-3xl
-md:text-4xl
-font-serif
-font-light
-tracking-[0.08em]
-leading-none
-text-white
-transition-all
-duration-300
-hover:text-[#D4AF37]
-hover:translate-x-2
-"
-              >
-                STORY
-              </Link>
+    <Link
+      href="/products"
+      onClick={() => setOpen(false)}
+      className="
+      group
+      block
+      w-fit
+      text-xl
+      font-light
+      uppercase
+      tracking-[0.28em]
+      text-white/90
+      transition-all
+      duration-300
+      hover:text-[#D4AF37]
+      hover:translate-x-1
+      "
+    >
+      PRODUCTS
+    </Link>
 
-            </div>
+    <Link
+      href="/#about"
+      onClick={() => setOpen(false)}
+      className="
+      group
+      block
+      w-fit
+      text-xl
+      font-light
+      uppercase
+      tracking-[0.28em]
+      text-white/90
+      transition-all
+      duration-300
+      hover:text-[#D4AF37]
+      hover:translate-x-1
+      "
+    >
+      STORY
+    </Link>
 
-            <div className="mt-20 border-t border-white/10 pt-10 space-y-5">
+  </div>
 
-              <a
-                href="https://instagram.com/huzayms"
-                className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
-              >
-                Instagram
-              </a>
+  <div className="mt-14 border-t border-white/10 pt-8 space-y-4">
 
-              <a
-                href="https://wa.me/918928042335"
-                className="block text-sm tracking-[0.3em] uppercase text-slate-400 hover:text-[#D4AF37]"
-              >
-                WhatsApp
-              </a>
+    <a
+      href="https://instagram.com/huzayms"
+      className="
+      block
+      text-[11px]
+      uppercase
+      tracking-[0.35em]
+      text-slate-500
+      hover:text-[#D4AF37]
+      transition-colors
+      "
+    >
+      Instagram
+    </a>
 
-            </div>
-          </div>
+    <a
+      href="https://wa.me/918928042335"
+      className="
+      block
+      text-[11px]
+      uppercase
+      tracking-[0.35em]
+      text-slate-500
+      hover:text-[#D4AF37]
+      transition-colors
+      "
+    >
+      WhatsApp
+    </a>
+
+  </div>
+</div>
         </div>
       <SearchOverlay
   open={searchOpen}

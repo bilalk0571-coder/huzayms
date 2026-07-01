@@ -4,11 +4,11 @@ export default function Story() {
   return (
     <section
       id="about"
-      className="relative bg-[#020612] pt-24 pb-12 overflow-hidden"
+      className="relative bg-[#020612] pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid lg:grid-cols-2 items-center gap-16">
+        <div className="grid lg:grid-cols-2 items-center gap-12">
 
           {/* IMAGE */}
 

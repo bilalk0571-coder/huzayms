@@ -1,173 +1,274 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { ChevronUp, Plus } from "lucide-react";
 
 export default function Footer() {
-  return (
-    <footer className="mt-10 border-t border-white/10 bg-[#020612]">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif text-white mb-4">
-            HUZAYM'S
-          </h2>
+  const [open, setOpen] = useState<string | null>(null);
 
-          <p className="text-slate-400 max-w-md leading-relaxed">
-            Crafting boutique fragrances inspired by depth,
-            warmth and timeless elegance.
-          </p>
-        </div>
+  const toggle = (id: string) => {
+    setOpen(open === id ? null : id);
+  };
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-
-          <div>
-            <h3 className="text-[#D4AF37] text-sm uppercase tracking-wider mb-4">
-              Explore
-            </h3>
-
-            <ul className="space-y-3 text-slate-400">
-              <li>
-                <Link href="/#collection" className="hover:text-white">
-                  Products
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/#collection" className="hover:text-white">
-                  Collection
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/#about" className="hover:text-white">
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-[#D4AF37] text-sm uppercase tracking-wider mb-4">
-              Customer Care
-            </h3>
-
-            <ul className="space-y-3 text-slate-400">
-              <li>FAQ</li>
-              <li>Shipping</li>
-              <li>Returns</li>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-[#D4AF37] text-sm uppercase tracking-wider mb-4">
-              Contact
-            </h3>
-
-            <ul className="space-y-3 text-slate-400">
-
-              <li>
-                <a
-                  href="https://wa.me/918928042335"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white"
-                >
-                  WhatsApp
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/huzayms?igsh=MWh0dHhkbW93ZHliaw%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white"
-                >
-                  Instagram
-                </a>
-              </li>
-
-              <li>
-  <a
-    href="mailto:huzaymselixirs@gmail.com?subject=Inquiry%20from%20HUZAYM'S%20Website"
-    className="hover:text-[#D4AF37] transition-colors duration-300 break-all"
-  >
-    Email
-  </a>
-</li>
-
-            </ul>
-          </div>
-<div className="md:col-span-2">
-  <div
-  className="
-rounded-3xl
-border
-border-[#D4AF37]/20
-bg-[#071225]
-p-8
-transition-all
-duration-500
-hover:border-[#D4AF37]/40
-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)]
-"
->
-
-    <p className="text-[10px] uppercase tracking-[0.4em] text-[#D4AF37] mb-3">
-      Exclusive Access
-    </p>
-
-    <h3 className="font-serif text-3xl text-white mb-4">
-      Join the House of HUZAYM'S
-    </h3>
-
-    <p className="text-slate-400 leading-relaxed mb-8">
-      Be the first to experience new creations, exclusive launches,
-      and private offers from the House of HUZAYM'S.
-    </p>
-
-    <div className="space-y-4">
-
-      <input
-        type="email"
-        placeholder="Enter your email"
-        className="w-full rounded-xl border border-white/10 bg-[#020612] px-5 py-4 text-white placeholder:text-slate-500 focus:border-[#D4AF37]
-focus:ring-2
-focus:ring-[#D4AF37]/20 focus:outline-none transition"
-      />
+  const Accordion = ({
+    id,
+    title,
+    children,
+  }: {
+    id: string;
+    title: string;
+    children: React.ReactNode;
+  }) => (
+    <div className="border-t border-[#D4AF37]/15">
 
       <button
+        onClick={() => toggle(id)}
         className="
-        w-full
-        rounded-xl
-        bg-gradient-to-r
-        from-[#BF953F]
-        via-[#E6C97A]
-        to-[#FCF6BA]
-        py-4
-        text-black
-        font-semibold
-        uppercase
-        tracking-[0.18em]
-        transition-all
-        duration-300
-        hover:scale-[1.02]
-        hover:shadow-[0_0_25px_rgba(212,175,55,0.25)]
+          w-full
+          flex
+          items-center
+          justify-between
+          py-7
+          group
         "
       >
-        Become a Member →
+        <span
+          className="
+            uppercase
+            tracking-[0.32em]
+            text-[12px]
+            font-light
+            text-white/90
+            transition-colors
+            duration-300
+            group-hover:text-[#D4AF37]
+          "
+        >
+          {title}
+        </span>
+
+        <Plus
+          className={`
+            w-5
+            h-5
+            transition-all
+            duration-500
+            ease-out
+            ${
+              open === id
+                ? "rotate-45 text-[#D4AF37]"
+                : "text-white/80 group-hover:text-[#D4AF37]"
+            }
+          `}
+        />
       </button>
 
-    </div>
-
-  </div>
-</div>
-        </div>
-
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-slate-500 text-sm">
-          © 2026 HUZAYM'S • Crafted in India
+      <div
+        className={`
+          overflow-hidden
+          transition-all
+          duration-500
+          ${
+            open === id
+              ? "max-h-96 opacity-100"
+              : "max-h-0 opacity-0"
+          }
+        `}
+      >
+        <div
+          className={`
+            space-y-4
+            pb-8
+            text-[15px]
+            text-slate-400
+            transition-all
+            duration-500
+            ${
+              open === id
+                ? "translate-y-0"
+                : "-translate-y-2"
+            }
+          `}
+        >
+          {children}
         </div>
       </div>
+
+    </div>
+  );
+
+  return (
+    <footer className="mt-12 bg-[#020612] border-t border-white/5">
+
+      <div className="max-w-4xl mx-auto px-6 py-20">
+
+        {/* Brand */}
+
+        <div className="text-center">
+
+          <p className="uppercase tracking-[0.45em] text-[11px] text-[#D4AF37]">
+            HUZAYM'S ELIXIRS
+          </p>
+
+          <div className="w-12 h-px bg-[#D4AF37]/40 mx-auto mt-5" />
+
+          <h2
+            className="
+              mt-10
+              font-serif
+              font-light
+              text-5xl
+              md:text-7xl
+              tracking-[0.06em]
+              uppercase
+              leading-tight
+              text-white
+            "
+          >
+            The House
+            <br />
+            of HUZAYM'S
+          </h2>
+
+        </div>
+
+        {/* Accordion */}
+
+        <div className="mt-24">
+
+          <Accordion id="contact" title="Contact">
+
+            <a
+              href="https://wa.me/918928042335"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              WhatsApp
+            </a>
+
+            <a
+              href="https://instagram.com/huzayms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="mailto:huzaymselixirs@gmail.com"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              Email
+            </a>
+
+          </Accordion>
+
+          <Accordion id="links" title="Quick Links">
+
+            <Link
+              href="/products"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              Shop
+            </Link>
+
+            <Link
+              href="/#collection"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              Collection
+            </Link>
+
+            <Link
+              href="/#about"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/products"
+              className="block hover:text-[#D4AF37] transition-colors"
+            >
+              Best Sellers
+            </Link>
+
+          </Accordion>
+
+          <Accordion id="policies" title="Policies">
+
+            <Link href="#" className="block hover:text-[#D4AF37] transition-colors">
+              Shipping Policy
+            </Link>
+
+            <Link href="#" className="block hover:text-[#D4AF37] transition-colors">
+              Returns
+            </Link>
+
+            <Link href="#" className="block hover:text-[#D4AF37] transition-colors">
+              Privacy Policy
+            </Link>
+
+            <Link href="#" className="block hover:text-[#D4AF37] transition-colors">
+              Terms & Conditions
+            </Link>
+
+          </Accordion>
+
+        </div>
+
+        {/* Back To Top */}
+
+        <div className="flex justify-center mt-20">
+
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })
+            }
+            className="
+              w-24
+              h-24
+              rounded-full
+              border
+              border-[#D4AF37]/50
+              flex
+              items-center
+              justify-center
+              text-[#D4AF37]
+              transition-all
+              duration-500
+              hover:bg-[#D4AF37]
+              hover:text-black
+              hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]
+            "
+          >
+            <ChevronUp className="w-8 h-8" />
+          </button>
+
+        </div>
+
+        {/* Copyright */}
+
+        <div className="mt-20 pt-8 border-t border-white/5 text-center">
+
+          <p className="text-slate-500 text-sm">
+            © 2026 HUZAYM'S ELIXIRS
+          </p>
+
+          <p className="mt-2 uppercase tracking-[0.25em] text-[11px] text-slate-600">
+            Crafted in India
+          </p>
+
+        </div>
+
+      </div>
+
     </footer>
   );
 }

@@ -51,11 +51,11 @@ export default function Reviews() {
   };
 
   return (
-    <section className="py-24 bg-[#020612] border-t border-white/[0.02]">
+    <section className="pt-20 pb-16 md:pt-24 md:pb-20 bg-[#020612] border-t border-white/[0.02]">
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Headings */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="text-[9px] font-bold text-[#C5A059] tracking-[0.4em] uppercase block mb-3">
             Verified Feedback
           </span>
@@ -68,7 +68,7 @@ export default function Reviews() {
           when switching between reviews of slightly different lengths.
           Absolute positioning of children allows for smooth crossfade transitions.
         */}
-        <div className="relative w-full min-h-[320px] flex items-center justify-center">
+        <div className="relative w-full min-h-[250px] flex items-center justify-center">
           {REVIEWS.map((review, index) => (
             <div 
               key={index}

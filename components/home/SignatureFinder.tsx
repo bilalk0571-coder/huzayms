@@ -33,11 +33,11 @@ export default function SignatureFinder() {
     .filter((product): product is NonNullable<typeof product> => !!product);
 
   return (
-    <section className="relative py-20 md:py-24 px-6 bg-[#020612] overflow-hidden">
+    <section className="relative pt-20 pb-16 md:pt-24 md:pb-20 px-6 bg-[#020612] overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         {/* Heading */}
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center mb-12">
           <p className="uppercase tracking-[0.4em] text-[#D4AF37] text-xs mb-4">
             Find Your Signature
           </p>

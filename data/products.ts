@@ -356,7 +356,7 @@ export const PRODUCTS: Product[] = [
 
   size: "4 × 30ml Bottles",
 
-  mainImage: "/images/complete-collection.jpeg",
+  mainImage: "/images/complete-collection1.jpeg",
 
   images: [
     "/images/complete-collection1.jpeg",
