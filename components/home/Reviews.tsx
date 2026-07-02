@@ -4,34 +4,34 @@ import { useState } from "react";
 
 const REVIEWS = [
   {
-    author: "Rohan K.",
-    location: "Delhi",
-    quote: "The sillage on Mariana Trench is insane. Easily lasts over 8 hours on my clothes, got three compliments on my first day wearing it."
-  },
-  {
-    author: "Aisha M.",
+    author: "Rehaan.",
     location: "Mumbai",
-    quote: "Cinnabon is absolute gourmand perfection. It smells exactly like warm, premium cinnamon rolls and vanilla cream. Highly addictive."
+    quote: "All the fragrances are really great, but Cinnabon is the best of all according to me. I already got 4 compliments just from wearing it! For this price point, the combo is an absolute steal."
   },
   {
-    author: "Vikram S.",
-    location: "Bangalore",
-    quote: "Crimson Leather strikes the perfect balance between bold Tuscan leather and smooth velvet rose. Exceptional projection."
+    author: "M Khasim.",
+    location: "Mumbai",
+    quote: "All three of them have an amazing fragrance profile, but Mariana Trench is just too good. Out of all of them, it is my absolute favorite."
   },
   {
-    author: "Kabir T.",
+    author: "Kazi.",
+    location: "Mumbai",
+    quote: "Crimson Leather is without a doubt the best of the lot. No words, just try it and experience it yourself. A solid 10/10."
+  },
+  {
+    author: "Talha.",
     location: "Pune",
-    quote: "Absolutely blown away by the quality. These fragrances easily compete with my niche designer collection. Will definitely be ordering again."
+    quote: "Tried them and loved every single one. Whoever I introduced these scents to gave an amazing response. The performance and longevity are incredibly good."
   },
   {
-    author: "Neha R.",
+    author: "Bilal K.",
     location: "Hyderabad",
-    quote: "The discovery trio was the perfect introduction. Each scent tells a completely different story. Mariana Trench is my absolute favorite."
+    quote: "Cinnabon is the ultimate dark horse—so addictive. Mariana Trench is beautifully masculine and lingering. Hats off, you have gained a long-term client."
   },
   {
-    author: "Arjun D.",
-    location: "Chennai",
-    quote: "Fast shipping and incredible packaging. The scent profile of Crimson Leather is deep, smoky, and extremely sophisticated."
+    author: "Rameez.",
+    location: "Mumbai",
+    quote: "The fragrances are very strong on clothes. It easily stays on the fabric all day and sometimes even into the next day. Truly excellent value for the price point."
   }
 ];
 

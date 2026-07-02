@@ -66,34 +66,18 @@ export default function Story() {
             <div className="mt-6 w-40 h-px bg-[#D4AF37]/40" />
 
             <p className="mt-10 text-xl md:text-3xl leading-relaxed font-light text-white">
-              Every fragrance begins with a belief that scent should leave an
-              impression long after you've left the room.
+              Huzaym’s wasn’t built in a corporate boardroom. It started with two best friends discussing colognes at 2 AM, driven by a simple question: why should you ever choose between elegance and endurance?
             </p>
 
             <div className="mt-8 space-y-6">
 
               <p className="text-slate-400 leading-8 text-[15px]">
-                HUZAYM'S ELIXIRS was founded on a simple philosophy—luxury should
-                be experienced, never reserved. Every fragrance begins with
-                carefully selected perfume oils chosen for exceptional richness,
-                projection and longevity before being blended with precision into
-                timeless compositions.
-              </p>
+We noticed a frustrating pattern in the industry. Most perfumes either smell masterfully composed but vanish within minutes, or they last all day but smell cheap and synthetic. We believed you deserved both.              </p>
 
               <p className="text-slate-400 leading-8 text-[15px]">
-                Inspired by refined craftsmanship, unforgettable places and
-                modern elegance, every bottle reflects our pursuit of quality,
-                understated sophistication and lasting performance. We believe a
-                great fragrance does more than smell beautiful—it becomes part of
-                your presence.
-              </p>
-
-              <p className="text-slate-400 leading-8 text-[15px]">
-                From deep aquatic freshness to comforting gourmand warmth and
-                bold leather accords, every HUZAYM'S creation is designed to
-                become a signature—one that lingers in memory long after the
-                moment has passed.
-              </p>
+This realization sparked months of obsession—sourcing premium materials and rejecting over 20 formulations until we perfected four high-concentration signature fragrances engineered to hit hard, project beautifully, and command compliments. Your fragrance shouldn’t just be a luxury—it should work just as hard as you do.              
+</p>
+              
 
             </div>
 

@@ -56,9 +56,7 @@ export default function ProductsPage() {
                   text-lg
                 "
               >
-                Discover signature fragrances crafted with premium perfume oils,
-                designed to elevate everyday moments with lasting elegance,
-                exceptional performance and timeless character.
+                Rich perfume oils, exceptional projection, and timeless character. Crafted for those who command a presence
               </p>
             </div>
           </FadeIn>
