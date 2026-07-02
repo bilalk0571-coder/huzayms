@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
 
     price:    500,
 
-    tagline:     "Aquatic • Fresh • Mysterious",
+    tagline:     "Aquatic • Fresh • Rusty",
     description:
       "It is an indomitable depth, the unknown, a call towards all and nothing — here, there, everywhere. The wholeness of the sea doesn't need an explanation.",
     size: "30ml / 1.0 fl.oz",
@@ -145,7 +145,7 @@ export const PRODUCTS: Product[] = [
 
     price: 500,
 
-    tagline:     "Sweet • Vanillic • Addictive",
+    tagline:     "Sweet • Warm • Seductive",
     description:
       "This is not loud. This is class. For the man who walks in calm, speaks less, and leaves a trail people remember. Office, weddings, winter nights — Cinnabon fits every royal moment.",
     size: "30ml / 1.0 fl.oz",

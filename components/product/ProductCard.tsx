@@ -12,9 +12,9 @@ interface ProductCardProps {
 }
 
 const teasers: Record<string, string> = {
-  "mariana-trench": "Dive into the depths of luxury.",
-  cinnabon: "Warm vanilla wrapped in irresistible sweetness.",
-  "crimson-leather": "Where rose meets leather in perfect darkness.",
+  "mariana-trench": "Fresh • Aquatic • Rusty",
+  cinnabon: "Sweet • Warm • Seductive",
+  "crimson-leather": "Rose • Leather • Bold",
    "complete-collection":
     "Own the entire HUZAYM'S signature collection.",
   "complete-discovery-trio":
