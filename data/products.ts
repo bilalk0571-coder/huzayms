@@ -54,10 +54,20 @@ export const PRODUCTS: Product[] = [
     },
 
     seo: {
-      title:       "Mariana Trench Eau De Parfum | Huzaym's Elixirs",
-      description: "An aquatic Eau De Parfum with bergamot, seaweed, and ambroxan. Fresh, mysterious, long-lasting. 30ml. ₹500.",
-      keywords:    ["aquatic perfume india", "fresh marine fragrance", "mariana trench perfume"],
-    },
+  title: "Mariana Trench Eau de Parfum | HUZAYM'S Elixirs",
+
+  description:
+    "Discover Mariana Trench Eau de Parfum by HUZAYM'S Elixirs. A refined aquatic fragrance crafted with bergamot, seaweed and ambroxan, delivering exceptional freshness, depth and lasting elegance.",
+
+  keywords: [
+    "Mariana Trench perfume",
+    "Luxury aquatic perfume",
+    "Marine fragrance India",
+    "Fresh Eau de Parfum",
+    "Premium perfume India",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
     featured:   true,
     bestSeller: true,
@@ -109,16 +119,20 @@ export const PRODUCTS: Product[] = [
     },
 
     seo: {
-      title: "Celestial Tide Extrait De Parfum | Huzaym's Elixirs",
-      description:
-        "Fresh Earl Grey tea, bergamot and cucumber with soft musk and vanilla. Launching soon.",
-      keywords: [
-        "fresh perfume",
-        "tea perfume",
-        "bergamot perfume",
-        "celestial tide",
-      ],
-    },
+  title: "Celestial Tide Extrait de Parfum | HUZAYM'S Elixirs",
+
+  description:
+    "Experience Celestial Tide Extrait de Parfum by HUZAYM'S Elixirs. A refreshing composition of Earl Grey tea, bergamot and cucumber resting on soft musk and vanilla for timeless everyday elegance.",
+
+  keywords: [
+    "Celestial Tide perfume",
+    "Tea perfume",
+    "Fresh extrait de parfum",
+    "Luxury perfume India",
+    "Bergamot fragrance",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
     featured: true,
     bestSeller: false,
@@ -172,10 +186,20 @@ export const PRODUCTS: Product[] = [
     },
 
     seo: {
-      title:       "Cinnabon Extrait De Parfum | Huzaym's Elixirs",
-      description: "A rich gourmand Extrait with cinnamon, bourbon vanilla, and praline. Beast-mode longevity. Perfect for weddings and winter evenings. 30ml. ₹500.",
-      keywords:    ["gourmand perfume", "vanilla fragrance india", "cinnamon extrait de parfum"],
-    },
+  title: "Cinnabon Extrait de Parfum | HUZAYM'S Elixirs",
+
+  description:
+    "Cinnabon Extrait de Parfum blends cinnamon, bourbon vanilla and praline into a rich gourmand fragrance crafted for evenings, celebrations and unforgettable impressions.",
+
+  keywords: [
+    "Cinnabon perfume",
+    "Vanilla perfume",
+    "Gourmand fragrance",
+    "Luxury extrait de parfum",
+    "Sweet perfume India",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
     featured:   true,
     bestSeller: false,
@@ -227,10 +251,20 @@ export const PRODUCTS: Product[] = [
     },
 
     seo: {
-      title:       "Crimson Leather Extrait De Parfum | Huzaym's Elixirs",
-      description: "A dark, bold Extrait of rose and genuine leather accord. Massive projection, all-day longevity. For those who dare to stand out. 30ml. ₹500.",
-      keywords:    ["leather perfume india", "rose leather fragrance", "dark bold extrait"],
-    },
+  title: "Crimson Leather Extrait de Parfum | HUZAYM'S Elixirs",
+
+  description:
+    "Crimson Leather Extrait de Parfum combines dark rose, leather and precious woods into an intensely refined fragrance with remarkable longevity and unforgettable character.",
+
+  keywords: [
+    "Crimson Leather perfume",
+    "Leather perfume",
+    "Rose leather fragrance",
+    "Luxury extrait de parfum",
+    "Bold perfume India",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
     featured:   true,
     bestSeller: false,
@@ -303,16 +337,19 @@ export const PRODUCTS: Product[] = [
   },
 
   seo: {
-    title: "Build Your Own Set | HUZAYM'S ELIXIRS",
-    description:
-      "Choose any three signature fragrances and create your own luxury Discovery Set. 3 × 30ml for ₹1200.",
-    keywords: [
-      "build your own perfume set",
-      "custom perfume gift",
-      "discovery set india",
-      "luxury fragrance bundle",
-    ],
-  },
+  title: "Discovery Trio | HUZAYM'S Elixirs",
+
+  description:
+    "Create your own Discovery Trio by selecting any three signature fragrances from HUZAYM'S Elixirs. Experience luxury perfumery tailored to your personal style.",
+
+  keywords: [
+    "Discovery perfume set",
+    "Luxury perfume gift set",
+    "Build your own perfume set",
+    "Perfume sampler India",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
   featured: true,
   bestSeller: false,
@@ -394,19 +431,19 @@ export const PRODUCTS: Product[] = [
   },
 
   seo: {
-    title:
-      "The Complete Collection | HUZAYM'S ELIXIRS",
+  title: "The Complete Collection | HUZAYM'S Elixirs",
 
-    description:
-      "Experience all four signature fragrances in one premium collection. Save ₹400 with the complete HUZAYM'S ELIXIRS bundle.",
+  description:
+    "Experience all four signature fragrances from HUZAYM'S Elixirs in one luxurious collection. A complete fragrance journey crafted for every mood, season and occasion.",
 
-    keywords: [
-      "perfume gift set",
-      "luxury fragrance bundle",
-      "complete perfume collection",
-      "huzayms collection",
-    ],
-  },
+  keywords: [
+    "Luxury perfume collection",
+    "Perfume gift set India",
+    "Premium fragrance bundle",
+    "Complete perfume collection",
+    "HUZAYM'S Elixirs",
+  ],
+},
 
   featured: true,
 

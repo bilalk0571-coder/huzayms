@@ -43,19 +43,57 @@ export async function generateMetadata(
 
   if (!product) {
     return {
-      title: "Product Not Found | HUZAYM'S",
+      title: "Product Not Found | HUZAYM'S Elixirs",
     };
   }
 
   return {
     title: product.seo.title,
+
     description: product.seo.description,
+
     keywords: product.seo.keywords,
+
+    alternates: {
+      canonical: `https://huzayms.vercel.app/products/${product.slug}`,
+    },
 
     openGraph: {
       title: product.seo.title,
+
       description: product.seo.description,
+
+      url: `https://huzayms.vercel.app/products/${product.slug}`,
+
+      siteName: "HUZAYM'S Elixirs",
+
+      images: [
+        {
+          url: product.mainImage,
+          width: 1200,
+          height: 1200,
+          alt: product.name,
+        },
+      ],
+
+      locale: "en_IN",
+
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+
+      title: product.seo.title,
+
+      description: product.seo.description,
+
       images: [product.mainImage],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -96,8 +134,54 @@ export default async function ProductPage({
   })
   .slice(0, 5);
 
+  const productSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Product",
+
+  name: product.name,
+
+  image: [
+    `https://huzayms.vercel.app${product.mainImage}`,
+  ],
+
+  description: product.seo.description,
+
+  sku: product.id,
+
+  brand: {
+    "@type": "Brand",
+    name: "HUZAYM'S Elixirs",
+  },
+
+  offers: {
+    "@type": "Offer",
+
+    url: `https://huzayms.vercel.app/products/${product.slug}`,
+
+    priceCurrency: "INR",
+
+    price: product.price,
+
+    availability: product.available
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
+
+    itemCondition: "https://schema.org/NewCondition",
+  },
+};
+
   return (
     <Layout>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(productSchema),
+      }}
+    />
+
+
       <div className="pb-0">
         <div className="max-w-7xl mx-auto px-6 pt-28 pb-6">
           
