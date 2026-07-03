@@ -154,11 +154,9 @@ duration-300
       group-hover:translate-x-1
     "
   >
-    {targeted?.slug === "celestial-tide"
-      ? "Pre-Order →"
-      : targeted
-      ? "Details →"
-      : "Launching Soon"}
+    {targeted
+  ? "Details →"
+  : "Launching Soon"}
   </span>
 </div>
                   </Link>

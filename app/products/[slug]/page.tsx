@@ -253,9 +253,7 @@ export default async function ProductPage({
                     hover:shadow-[0_12px_30px_rgba(212,175,55,0.35)]
                   "
                 >
-                  {product.slug === "celestial-tide"
-                    ? "Pre-Order on WhatsApp →"
-                    : "Order on WhatsApp →"}
+                  Order on WhatsApp →
                 </a>
                 
               </div>

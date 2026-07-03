@@ -140,7 +140,7 @@ export const PRODUCTS: Product[] = [
     available: true,
 
     waLink:
-      "https://wa.me/918928042335?text=Hi!%20I'd%20like%20to%20pre-order%20Celestial%20Tide%20(30ml).",
+      "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20ordering%20Celestial%20Tide%20(30ml).",
 
     createdAt: "2026-06-28",
   },
@@ -470,7 +470,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   image: "/images/hero-celestial.jpeg",
   alt: "Celestial Tide Launch",
   productSlug: "celestial-tide",
-  badgeLabel: "Coming Soon",
+  badgeLabel: "New Arrival",
 },
 {
   id: "hero-complete",
