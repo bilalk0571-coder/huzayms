@@ -2,7 +2,7 @@ export const HERO_SLIDES = [
   {
     id: 1,
     desktopImage: "/images/hero/campaign-desktop.png",
-    mobileImage: "/images/hero/campaign-mobile.png",
+    mobileImage: "/images/hero/campaign-mobile.jpg",
     href: "/products/build-your-own-discovery-set",
     alt: "Discovery Trio",
   },
