@@ -1,22 +1,71 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HERO_SLIDES } from "@/data/heroSlides";
 
 export default function HeroCampaign() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+const touchEndX = useRef<number | null>(null);
 
+const intervalRef = useRef<NodeJS.Timeout | null>(null);
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
+  startAutoSlide();
 
-    return () => clearInterval(timer);
-  }, []);
+  return stopAutoSlide;
+}, []);
+
+const stopAutoSlide = () => {
+  if (intervalRef.current) clearInterval(intervalRef.current);
+};
+
+const startAutoSlide = () => {
+  stopAutoSlide();
+
+  intervalRef.current = setInterval(() => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  }, 5000);
+};
+
+const nextSlide = () => {
+  setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+};
+
+const previousSlide = () => {
+  setCurrentSlide((prev) =>
+    prev === 0 ? HERO_SLIDES.length - 1 : prev - 1
+  );
+};
 
   return (
-  <section className="relative h-[85svh] lg:h-[92vh]">
+  <section
+  className="relative h-[85svh] lg:h-[92vh]"
+  onTouchStart={(e) => {
+    stopAutoSlide();
+    touchStartX.current = e.touches[0].clientX;
+  }}
+  onTouchMove={(e) => {
+    touchEndX.current = e.touches[0].clientX;
+  }}
+  onTouchEnd={() => {
+    if (
+      touchStartX.current !== null &&
+      touchEndX.current !== null
+    ) {
+      const distance = touchStartX.current - touchEndX.current;
+
+      if (distance > 60) nextSlide();
+
+      if (distance < -60) previousSlide();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+
+    startAutoSlide();
+  }}
+>
 
     {HERO_SLIDES.map((slide, index) => (
       <Link
@@ -26,7 +75,7 @@ export default function HeroCampaign() {
           absolute
           inset-0
           transition-opacity
-          duration-700
+          duration-1000 ease-in-out
           ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"}
         `}
       >
