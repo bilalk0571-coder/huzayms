@@ -77,9 +77,9 @@ export default function Home() {
   <Collection />
 </FadeIn>
 
-<FadeIn>
+
   <SignatureFinder />
-</FadeIn>
+
 
 <FadeIn>
   <Reviews />
