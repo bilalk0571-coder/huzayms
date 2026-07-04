@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { HERO_SLIDES } from "@/data/products";
 import InstagramGallery from "@/components/home/InstagramGallery";
 import Layout from "@/components/layout/Layout";
-import Hero from "@/components/home/Hero";
+import HeroCampaign from "@/components/home/HeroCampaign";
 import Collection from "@/components/home/Collection";
 import SignatureFinder from "@/components/home/SignatureFinder";
 import Reviews from "@/components/home/Reviews";
@@ -71,13 +71,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Hero
-        currentSlide={currentSlide}
-        heroScrollRef={heroScrollRef}
-        isUserInteracting={isUserInteracting}
-        onHeroScroll={handleHeroScroll}
-        onIndicatorClick={handleIndicatorClick}
-      />
+      <HeroCampaign />
 
      <FadeIn>
   <Collection />
