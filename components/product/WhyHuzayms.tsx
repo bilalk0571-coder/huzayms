@@ -27,8 +27,8 @@ const features = [
   },
   {
     icon: Truck,
-    title: "Fast Shipping",
-    subtitle: "Ships within 24 Hours.",
+    title: "Safe Shipping",
+    subtitle: "Safe Delivery Guaranteed.",
   },
   {
     icon: Gift,

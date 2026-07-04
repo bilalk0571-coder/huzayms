@@ -10,7 +10,7 @@ export const HERO_SLIDES = [
   {
     id: 2,
     desktopImage: "/images/hero/celestial-desktop.png",
-    mobileImage: "/images/hero/celestial-mobile.jpg",
+    mobileImage: "/images/hero/celestial-mobile.png",
     href: "/products/celestial-tide",
     alt: "Celestial Tide",
   },

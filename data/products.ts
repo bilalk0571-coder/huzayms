@@ -112,7 +112,7 @@ export const PRODUCTS: Product[] = [
     },
 
     performance: {
-      longevity: 4,
+      longevity: 3,
       projection: 3,
       season: ["Spring", "Summer"],
       occasion: ["Daily Wear", "Office", "Casual"],
