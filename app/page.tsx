@@ -7,7 +7,7 @@ import Layout from "@/components/layout/Layout";
 import HeroCampaign from "@/components/home/HeroCampaign";
 import Collection from "@/components/home/Collection";
 import SignatureFinder from "@/components/home/SignatureFinder";
-import Reviews from "@/components/home/Reviews";
+import VerifiedReviews from "@/components/product/VerifiedReviews";
 import Story from "@/components/home/Story";
 
 import FadeIn from "@/components/ui/FadeIn";
@@ -77,12 +77,16 @@ export default function Home() {
   <Collection />
 </FadeIn>
 
-
+<FadeIn>
   <SignatureFinder />
-
+</FadeIn>
 
 <FadeIn>
-  <Reviews />
+  <section className="px-6">
+    <div className="max-w-7xl mx-auto">
+      <VerifiedReviews />
+    </div>
+  </section>
 </FadeIn>
 
 <FadeIn>

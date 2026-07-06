@@ -16,7 +16,7 @@ const teasers: Record<string, string> = {
   cinnabon: "Sweet • Warm • Seductive",
   "crimson-leather": "Rose • Leather • Bold",
    "complete-collection":
-    "Own the entire HUZAYM'S signature collection.",
+    "The HUZAYM signature set.",
   "complete-discovery-trio":
     "Experience every signature in one luxurious collection.",
 };

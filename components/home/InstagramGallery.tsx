@@ -13,7 +13,7 @@ const galleryImages = [
 
 export default function InstagramGallery() {
   return (
-    <section className="relative overflow-hidden border-y border-white/[0.04] bg-[#020612] pt-20 pb-16 md:pt-24 md:pb-20">
+    <section className="relative overflow-hidden bg-[#020612] mt-20 pt-20 pb-16 md:mt-24 md:pt-24 md:pb-20">
 
     
 
@@ -48,7 +48,7 @@ export default function InstagramGallery() {
             className="inline-flex items-center gap-3 mt-9 text-[#D4AF37] uppercase tracking-[0.30em] text-sm hover:gap-5 transition-all duration-300"
           >
             Follow @HUZAYMS
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </a>
 
           <div className="w-56 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent mx-auto mt-5" />
@@ -89,37 +89,7 @@ export default function InstagramGallery() {
 
         </div>
 
-        {/* Bottom Button */}
-
-        <div className="flex justify-center mt-14">
-
-          <a
-            href="https://instagram.com/huzayms"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              inline-flex
-              items-center
-              gap-3
-              rounded-xl
-              border border-[#D4AF37]/40
-              px-10 py-4
-              uppercase
-              tracking-[0.28em]
-              text-sm
-              text-[#D4AF37]
-              hover:bg-[#D4AF37]
-              hover:text-[#071225]
-              transition-all
-              duration-300
-              hover:shadow-[0_0_35px_rgba(212,175,55,0.20)]
-            "
-          >
-            <ArrowUpRight size={18} />
-            Follow @HUZAYMS
-          </a>
-
-        </div>
+        
 
       </div>
     </section>
