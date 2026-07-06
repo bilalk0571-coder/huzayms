@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -158,6 +159,7 @@ export default function RootLayout({
         />
 
         {children}
+        <Analytics />
 
       </body>
     </html>
