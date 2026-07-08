@@ -7,6 +7,7 @@ import ProductAccordion from "@/components/product/ProductAccordion";
 import ProductCard from "@/components/product/ProductCard";
 import Reviews from "@/components/home/Reviews";
 import WhyHuzayms from "@/components/product/WhyHuzayms";
+import AddToCartButton from "@/components/product/AddToCartButton";
 
 // Import your existing FadeIn component
 import FadeIn from "@/components/ui/FadeIn"; 
@@ -229,6 +230,7 @@ export default async function ProductPage({
                 <p className="max-w-lg text-slate-400 leading-8 text-[15px]">
                   {product.description}
                 </p>
+                <AddToCartButton productId={product.id} />
                 <a
                   href={product.waLink}
                   target="_blank"
