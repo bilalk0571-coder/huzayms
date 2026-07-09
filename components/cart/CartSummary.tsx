@@ -258,21 +258,23 @@ export default function CartSummary({
 
       {/* Mobile Sticky Drawer Layout */}
       <div
-        className="
-          lg:hidden
-          fixed
-          bottom-0
-          left-0
-          right-0
-          z-50
-          border-t
-          border-white/10
-          bg-[#071225]/95
-          backdrop-blur-xl
-          p-5
-          shadow-[0_-10px_30px_rgba(0,0,0,0.5)]
-        "
-      >
+  className="
+    lg:hidden
+    fixed
+    bottom-0
+    inset-x-0
+    z-50
+    box-border
+    border-t
+    border-white/10
+    bg-[#071225]/95
+    backdrop-blur-xl
+    px-5
+    pt-5
+    pb-[calc(env(safe-area-inset-bottom)+20px)]
+    shadow-[0_-10px_30px_rgba(0,0,0,0.5)]
+  "
+>
         <h3 className="font-serif text-lg text-white">
           Summary
         </h3>

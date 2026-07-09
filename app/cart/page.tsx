@@ -101,24 +101,8 @@ if (!isLoaded) {
 </div>
 
 {/* Mobile Sticky Bottom */}
-<div
-  className="
-    lg:hidden
-    fixed
-    bottom-0
-    left-0
-    right-0
-    z-50
-    border-t
-    border-[#D4AF37]/10
-    bg-[#071225]/95
-    backdrop-blur-xl
-    px-5
-    py-4
-    shadow-[0_-10px_30px_rgba(0,0,0,0.45)]
-  "
->
-  <CartSummary compact />
+<div className="lg:hidden">
+  <CartSummary mode="cart" />
 </div>
         </div>
       </section>

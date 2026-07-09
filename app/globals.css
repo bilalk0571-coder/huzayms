@@ -80,3 +80,8 @@ body {
 .animate-review-scroll:hover {
   animation-play-state: paused;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}

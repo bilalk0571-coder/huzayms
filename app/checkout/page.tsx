@@ -30,7 +30,7 @@ export default function CheckoutPage() {
 
   return (
     <Layout>
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-24">
+      <section className="max-w-7xl mx-auto px-6 pt-32 pb-40">
         <FadeIn>
           <div className="text-center">
             <p className="uppercase tracking-[0.35em] text-[11px] text-[#D4AF37]">
@@ -47,8 +47,17 @@ export default function CheckoutPage() {
           </div>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-12 mt-16">
-          <div className="space-y-8">
+        <div
+  className="
+    mx-auto
+    mt-16
+    grid
+    max-w-6xl
+    lg:grid-cols-[1.3fr_0.7fr]
+    gap-12
+  "
+>
+          <div className="space-y-8 max-w-3xl">
             <CheckoutForm onValidityChange={setIsValid} />
           </div>
 

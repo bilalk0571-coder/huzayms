@@ -217,24 +217,8 @@ export default function ShippingAddress({
   }
 
   return (
-    <section
-      className="
-        rounded-3xl
-        border
-        border-white/10
-        bg-[#071225]
-        p-8
-      "
-    >
-      <p className="uppercase tracking-[0.35em] text-[11px] text-[#D4AF37]">
-        Shipping Address
-      </p>
-
-      <h2 className="mt-4 font-serif text-3xl text-white">
-        Delivery Details
-      </h2>
-
-      <div className="mt-10 space-y-6">
+    <section className="p-0">
+      <div className="space-y-6">
         {renderInput(
           "Full Name",
           "fullName",
