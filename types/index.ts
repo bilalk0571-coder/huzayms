@@ -10,7 +10,9 @@ export type ConcentrationType =
   | "Eau De Parfum"
   | "Extrait De Parfum"
   | "Discovery Set"
-  | "Complete Collection";
+  | "Complete Collection"
+  | "Limited Bundle"
+  ;
 
 /**
  * 1–5 scale. Render as icons in the UI — never expose the raw number.
@@ -106,6 +108,7 @@ export interface Product {
    */
   slug: string;
   name: string;
+  
 
   // --- Classification ---
   type:                ConcentrationType;
