@@ -146,7 +146,7 @@ export interface Product {
   newArrival?: boolean;
   /** Set false for out-of-stock. Never delete — it breaks links. */
   available:   boolean;
-
+  freeShipping?: boolean;
   // --- Commerce ---
   /** Pre-built WhatsApp deep link. URL-encode the message text. */
   waLink: string;

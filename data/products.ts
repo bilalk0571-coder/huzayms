@@ -101,6 +101,8 @@ export const PRODUCTS: Product[] = [
 
   available: true,
 
+  freeShipping: true,
+
   waLink:
     "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20the%20Rain%20Duo%20Bundle.",
 

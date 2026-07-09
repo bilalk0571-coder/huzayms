@@ -29,12 +29,16 @@ export default function CartSummary({
   const subtotal = calculateSubtotal(cartProducts);
   
   const FREE_SHIPPING_THRESHOLD = 1600;
-  const SHIPPING_CHARGE = 79;
+const SHIPPING_CHARGE = 79;
 
-  const shipping =
-    subtotal >= FREE_SHIPPING_THRESHOLD
-      ? 0
-      : SHIPPING_CHARGE;
+const hasFreeShippingItem = cartProducts.some(
+  (item) => item.product.freeShipping
+);
+
+const shipping =
+  hasFreeShippingItem || subtotal >= FREE_SHIPPING_THRESHOLD
+    ? 0
+    : SHIPPING_CHARGE;
 
   const total = subtotal + shipping;
 

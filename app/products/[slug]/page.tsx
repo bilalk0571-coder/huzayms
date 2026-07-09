@@ -205,18 +205,24 @@ export default async function ProductPage({
                     4.9 / 5
                   </span>
                 </div>
-                {product.slug === "celestial-tide" && (
-                  <div className="inline-flex mt-1 mb-1">
-                    <span className="px-3 py-1 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] uppercase tracking-[0.35em]">
-                    New Arrival
-                    </span>
-                  </div>
-                )}
-                <p className="text-[#D4AF37] text-4xl font-semibold">
-                  {product.slug === "celestial-tide"
-                    ? "Launch Price • ₹500"
-                    : formatPrice(product.price)}
-                </p>
+                
+                <div className="flex items-center gap-3 flex-wrap">
+  <p className="text-[#D4AF37] text-4xl font-semibold">
+    {formatPrice(product.price)}
+  </p>
+
+  {product.slug === "celestial-tide" && (
+    <span className="rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#D4AF37]">
+      Launch Offer
+    </span>
+  )}
+
+  {product.freeShipping && (
+    <span className="rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#D4AF37]">
+      Free Shipping
+    </span>
+  )}
+</div>
                 <p className="text-xs uppercase tracking-[0.28em] text-slate-500">
                   {product.size}
                 </p>
@@ -231,32 +237,21 @@ export default async function ProductPage({
                   {product.description}
                 </p>
                 <AddToCartButton productId={product.id} />
-                <a
-                  href={product.waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    mt-3
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#D4AF37]
-                    px-8
-                    py-4
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-[0.25em]
-                    text-black
-                    transition-all
-                    duration-300
-                    hover:scale-[1.03]
-                    hover:shadow-[0_12px_30px_rgba(212,175,55,0.35)]
-                  "
-                >
-                  Order on WhatsApp →
-                </a>
+                <div className="flex flex-col gap-2 pt-2">
+  <div className="flex items-center gap-2 text-sm text-slate-300">
+    <span className="text-[#D4AF37]">✓</span>
+    <span>Secure Checkout</span>
+  </div>
+
+  <div className="flex items-center gap-2 text-sm text-slate-300">
+    <span className="text-[#D4AF37]">✓</span>
+    <span>
+      {product.freeShipping
+        ? "Free Shipping Included"
+        : "Safe Shipping"}
+    </span>
+  </div>
+</div>
                 
               </div>
             </div>

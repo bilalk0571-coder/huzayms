@@ -101,7 +101,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://huzayms.vercel.app",
+    canonical: "https://https://huzayms.com",
   },
 
   icons: {

@@ -7,4 +7,5 @@ export const REVIEWS = [
   "/images/reviews/review6.jpeg",
   "/images/reviews/review7.jpeg",
   "/images/reviews/review8.jpeg",
+  "/images/reviews/review9.jpeg",
 ];
