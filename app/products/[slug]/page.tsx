@@ -133,7 +133,7 @@ export default async function ProductPage({
     return 0;
 
   })
-  .slice(0, 5);
+  .slice(0, 6);
 
   const productSchema = {
   "@context": "https://schema.org",
@@ -263,139 +263,78 @@ export default async function ProductPage({
           </FadeIn>
 
           {/* ================= 2. FRAGRANCE NOTES / BUNDLE ================= */}
-
-<FadeIn>
-
-  <ProductAccordion
-    title={product.isBundle ? "What's Included" : "Fragrance Notes"}
-  >
+          <FadeIn>
+            <ProductAccordion
+              title={product.isBundle ? "What's Included" : "Fragrance Notes"}
+            >
               {product.isBundle ? (
+                <div className="space-y-6">
+                  {product.bundleProductSlugs.map((slug, index) => {
+                    const bundleProduct = PRODUCTS.find((p) => p.slug === slug);
 
-<div className="space-y-6">
+                    if (!bundleProduct) return null;
 
-  <div className="flex justify-between items-center border-b border-white/10 pb-5">
+                    return (
+                      <div
+                        key={slug}
+                        className={
+                          index !== product.bundleProductSlugs.length - 1
+                            ? "flex justify-between items-center border-b border-white/10 pb-5"
+                            : "flex justify-between items-center"
+                        }
+                      >
+                        <div>
+                          <h3 className="text-white text-xl font-serif">
+                            {bundleProduct.name}
+                          </h3>
 
-    <div>
+                          <p className="text-slate-400 text-sm mt-1">
+                            {bundleProduct.tagline}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
 
-      <h3 className="text-white text-xl font-serif">
-        Mariana Trench
-      </h3>
+                  <div className="pt-4">
+                    <p className="text-[#D4AF37] uppercase tracking-[0.25em] text-xs">
+                      {product.size}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Top Notes
+                    </p>
 
-      <p className="text-slate-400 text-sm mt-1">
-        Fresh • Aquatic • Mysterious
-      </p>
+                    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+                      {product.notes.top.join(" • ")}
+                    </p>
+                  </div>
 
-    </div>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Heart Notes
+                    </p>
 
-  </div>
+                    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+                      {product.notes.heart.join(" • ")}
+                    </p>
+                  </div>
 
-  <div className="flex justify-between items-center border-b border-white/10 pb-5">
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Base Notes
+                    </p>
 
-    <div>
-
-      <h3 className="text-white text-xl font-serif">
-        Cinnabon
-      </h3>
-
-      <p className="text-slate-400 text-sm mt-1">
-        Sweet • Warm • Addictive
-      </p>
-
-    </div>
-
-  </div>
-
-  <div className="flex justify-between items-center border-b border-white/10 pb-5">
-
-    <div>
-
-      <h3 className="text-white text-xl font-serif">
-        Crimson Leather
-      </h3>
-
-      <p className="text-slate-400 text-sm mt-1">
-        Rose • Leather • Bold
-      </p>
-
-    </div>
-
-  </div>
-
-  <div className="flex justify-between items-center">
-
-    <div>
-
-      <h3 className="text-white text-xl font-serif">
-        Celestial Tide
-      </h3>
-
-      <p className="text-slate-400 text-sm mt-1">
-        Fresh • Tea • Citrus
-      </p>
-
-    </div>
-
-  </div>
-
-  <div className="pt-4">
-
-    <p className="text-[#D4AF37] uppercase tracking-[0.25em] text-xs">
-
-      {product.slug === "complete-collection"
-
-        ? "Includes all four signature fragrances."
-
-        : "Choose any three during WhatsApp ordering."}
-
-    </p>
-
-  </div>
-
-</div>
-
-) : (
-
-<div className="grid md:grid-cols-3 gap-8">
-
-  <div>
-
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Top Notes
-    </p>
-
-    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-      {product.notes.top.join(" • ")}
-    </p>
-
-  </div>
-
-  <div>
-
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Heart Notes
-    </p>
-
-    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-      {product.notes.heart.join(" • ")}
-    </p>
-
-  </div>
-
-  <div>
-
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Base Notes
-    </p>
-
-    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
-      {product.notes.base.join(" • ")}
-    </p>
-
-  </div>
-
-</div>
-
-)}
+                    <p className="mt-3 font-serif text-2xl text-white leading-relaxed">
+                      {product.notes.base.join(" • ")}
+                    </p>
+                  </div>
+                </div>
+              )}
             </ProductAccordion>
           </FadeIn>
 
@@ -403,100 +342,90 @@ export default async function ProductPage({
           <FadeIn>
             <ProductAccordion title="Performance & Usage">
               {product.isBundle ? (
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Collection
+                    </p>
 
-<div className="grid md:grid-cols-2 gap-8">
+                    <p className="mt-2 text-white text-lg">
+                      {product.bundleProductSlugs.length} Signature Fragrances
+                    </p>
+                  </div>
 
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Collection
-    </p>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Bottle Size
+                    </p>
 
-    <p className="mt-2 text-white text-lg">
-      {product.slug === "complete-collection"
-        ? "All 4 Signature Fragrances"
-        : "Choose Any 3 Fragrances"}
-    </p>
-  </div>
+                    <p className="mt-2 text-white text-lg">
+                      {product.size}
+                    </p>
+                  </div>
 
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Bottle Size
-    </p>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Best For
+                    </p>
 
-    <p className="mt-2 text-white text-lg">
-      {product.size}
-    </p>
-  </div>
+                    <p className="mt-2 text-white leading-7">
+                      {product.description}
+                    </p>
+                  </div>
 
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Best For
-    </p>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Savings
+                    </p>
 
-    <p className="mt-2 text-white leading-7">
-      Discovering every signature fragrance.
-    </p>
-  </div>
+                    <p className="mt-2 text-[#D4AF37] text-lg">
+                      Save ₹{product.originalPrice! - product.price}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Longevity
+                    </p>
 
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Savings
-    </p>
+                    <p className="mt-2 text-white text-lg">
+                      {LONGEVITY_LABELS[product.performance.longevity]}
+                    </p>
+                  </div>
 
-    <p className="mt-2 text-[#D4AF37] text-lg">
-      Save ₹{product.originalPrice! - product.price}
-    </p>
-  </div>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Projection
+                    </p>
 
-</div>
+                    <p className="mt-2 text-white text-lg">
+                      {PROJECTION_LABELS[product.performance.projection]}
+                    </p>
+                  </div>
 
-) : (
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Best Season
+                    </p>
 
-<div className="grid md:grid-cols-2 gap-8">
+                    <p className="mt-2 text-white leading-7">
+                      {product.performance.season.join(" • ")}
+                    </p>
+                  </div>
 
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Longevity
-    </p>
+                  <div>
+                    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
+                      Best Occasion
+                    </p>
 
-    <p className="mt-2 text-white text-lg">
-      {LONGEVITY_LABELS[product.performance.longevity]}
-    </p>
-  </div>
-
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Projection
-    </p>
-
-    <p className="mt-2 text-white text-lg">
-      {PROJECTION_LABELS[product.performance.projection]}
-    </p>
-  </div>
-
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Best Season
-    </p>
-
-    <p className="mt-2 text-white leading-7">
-      {product.performance.season.join(" • ")}
-    </p>
-  </div>
-
-  <div>
-    <p className="uppercase tracking-[0.25em] text-[10px] text-slate-500">
-      Best Occasion
-    </p>
-
-    <p className="mt-2 text-white leading-7">
-      {product.performance.occasion.join(" • ")}
-    </p>
-  </div>
-
-</div>
-
-)}
+                    <p className="mt-2 text-white leading-7">
+                      {product.performance.occasion.join(" • ")}
+                    </p>
+                  </div>
+                </div>
+              )}
             </ProductAccordion>
           </FadeIn>
 
@@ -539,17 +468,17 @@ export default async function ProductPage({
           </FadeIn>
 
           {/* ================= 5. VERIFIED CUSTOMER REVIEWS BANNER ================= */}
-<FadeIn>
-  <VerifiedReviews />
-</FadeIn>
+          <FadeIn>
+            <VerifiedReviews />
+          </FadeIn>
 
-</div>
-</div>
+        </div>
+      </div>
 
-{/* ================= 6. CAROUSEL REVIEWS COMPONENT ================= */}
-<FadeIn>
-  <WhyHuzayms />
-</FadeIn>
+      {/* ================= 6. CAROUSEL REVIEWS COMPONENT ================= */}
+      <FadeIn>
+        <WhyHuzayms />
+      </FadeIn>
     </Layout>
   );
 }

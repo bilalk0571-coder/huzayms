@@ -12,6 +12,100 @@ import type { Product, HeroSlide } from "@/types";
 
 
 export const PRODUCTS: Product[] = [
+  // ----------------------------------------------------------
+// 7. Rain Duo
+// ----------------------------------------------------------
+{
+  id: "rain-duo",
+
+  slug: "rain-duo",
+
+  name: "Dual Essence",
+
+  type: "Limited Bundle",
+
+  isBundle: true,
+
+  bundleProductSlugs: [
+    "crimson-leather",
+    "celestial-tide",
+  ],
+
+  price: 900,
+
+  originalPrice: 1000,
+
+  tagline: "Fresh Meets Dark.",
+
+  description:
+    "Experience two contrasting signatures in one exclusive bundle. Celestial Tide delivers crisp aquatic freshness, while Crimson Leather adds rich rose and leather depth. Crafted for every mood, together.",
+
+  size: "2 × 30ml Bottles",
+
+  mainImage: "/images/duo.jpeg",
+
+  images: [
+    "/images/duo.jpeg",
+    "/images/celestial1.jpeg",
+    "/images/crimson1.jpeg",
+    "/images/celestial3.jpeg",
+    "/images/crimson3.jpeg",
+  ],
+
+  notes: {
+    top: ["Fresh Aquatic", "Dark Rose"],
+    heart: ["Elegant Contrast"],
+    base: ["Luxury Duo"],
+  },
+
+  performance: {
+    longevity: 5,
+    projection: 5,
+    season: [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter",
+    ],
+    occasion: [
+      "Daily Wear",
+      "Office",
+      "Casual",
+      "Evening",
+      "Wedding",
+      "Date Night",
+    ],
+  },
+
+  seo: {
+    title: "Rain Duo | HUZAYM'S Elixirs",
+
+    description:
+      "Discover Rain Duo by HUZAYM'S Elixirs. A premium fragrance bundle featuring Celestial Tide and Crimson Leather at a special bundle price.",
+
+    keywords: [
+      "Rain Duo",
+      "Perfume bundle",
+      "Luxury fragrance set",
+      "Celestial Tide",
+      "Crimson Leather",
+      "HUZAYM'S Elixirs",
+    ],
+  },
+
+  featured: true,
+
+  bestSeller: false,
+
+  newArrival: true,
+
+  available: true,
+
+  waLink:
+    "https://wa.me/918928042335?text=Hi!%20I'm%20interested%20in%20the%20Rain%20Duo%20Bundle.",
+
+  createdAt: "2026-07-09",
+},
 
   // ----------------------------------------------------------
   // 1. MARIANA TRENCH
@@ -456,6 +550,7 @@ export const PRODUCTS: Product[] = [
 
   createdAt: "2026-01-01",
 },
+
 
 ];
 
